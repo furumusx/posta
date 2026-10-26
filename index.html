@@ -50,6 +50,7 @@ nav#tabs button.on::before{content:"";position:absolute;top:0;left:30%;right:30%
 .chip{flex:none;border:1px solid var(--line);background:var(--card);border-radius:999px;height:32px;padding:0 var(--sp3);font-size:13px;color:var(--mut);display:inline-flex;align-items:center}
 .chip.on{background:var(--acc);border-color:var(--acc);color:var(--acc-tx);font-weight:700}
 .badge{font-size:11px;border-radius:6px;padding:1px 6px;border:1px solid var(--line);color:var(--mut);white-space:nowrap}
+.badge.shot{color:#9be7b6;border-color:#2fd27a}
 .badge.draft{color:var(--mut)}.badge.listed{color:var(--acc);border-color:var(--acc)}.badge.sold{color:var(--pos);border-color:var(--pos)}.badge.relist{color:var(--warn);border-color:var(--warn)}
 .lc .top{display:flex;gap:var(--sp3)}
 .lc img{width:56px;height:56px;object-fit:cover;border-radius:var(--r-sm);flex:none;background:var(--card2)}
@@ -132,6 +133,8 @@ const CONDS=['新品、未使用','未使用に近い','目立った傷や汚れ
 const CATS=['本・漫画・雑誌','CD・DVD','ゲーム','トレカ','おもちゃ・ホビー','衣類','その他'];
 const PLAT={mercari:{name:'メルカリ',url:'https://jp.mercari.com/'},rakuma:{name:'ラクマ',url:'https://fril.jp/'},yahoo:{name:'Yahoo!フリマ',url:'https://paypayfleamarket.yahoo.co.jp/'}};
 const CHP=[{k:'mercari',name:'メルカリ',fee:10},{k:'yahoo',name:'Yahoo!フリマ',fee:5},{k:'rakuma',name:'ラクマ',fee:10},{k:'yahuoku',name:'ヤフオク',fee:10},{k:'custom',name:'カスタム',fee:null}];
+const KOMASETK={set:'全巻セット',partial:'途中セット',single:'単品',bara:'バラ'};
+const BADCOND=['傷や汚れあり','全体的に状態が悪い'];
 const SSSCH={'メルカリ':'m','Yahoo!フリマ':'y','ラクマ':'r','ヤフオク':'a'};
 const TCATS=['買った時','売れた時','コメント','受取評価','その他'];
 const VARS=['{商品名}','{価格}','{状態}','{発送方法}','{今日}'];
@@ -153,7 +156,7 @@ function presets(){const t=Date.now();const P=[
   RECV_TPL];
   return P.map(([c,ti,b],i)=>({id:uid()+i,category:c,title:ti,body:b,createdAt:t+i,updatedAt:t+i}))}
 function defState(){return{folders:['漫画セット','単巻','その他'].map((n,i)=>({id:uid()+'f'+i,name:n})),listings:[],templates:presets(),records:[],
-  settings:{launch:'mercari',channel:'mercari',target:30,sssUrl:'https://furumusx.github.io/SedoScope/'}}}
+  settings:{launch:'mercari',channel:'mercari',target:30,sssUrl:'https://furumusx.github.io/SedoScope/',komaUrl:'https://furumusx.github.io/koma/'}}}
 function fix(s){const d=defState();if(!s||typeof s!=='object')return d;
   for(const k of ['folders','listings','templates','records'])if(!Array.isArray(s[k]))s[k]=[];
   s.settings=Object.assign(d.settings,s.settings||{});return s}
@@ -200,7 +203,7 @@ function memoHTML(){
   ${arr.map(l=>{const days=l.status==='listed'&&l.listedAt?Math.floor((Date.now()-l.listedAt)/864e5):null;
     return `<div class="card lc"><div class="top">${UI.sel?`<input type="checkbox" class="chk" data-pick="${esc(l.id)}" ${UI.picked[l.id]?'checked':''}>`:''}${l.images&&l.images[0]?`<img src="${l.images[0]}" alt="">`:''}
     <div class="grow"><div class="t">${esc(l.title||'（商品名なし）')}</div>
-    <div class="s"><span class="badge ${l.status}">${STATUS[l.status]||''}</span> ${esc(folderName(l.folderId))}${days!==null?` ・出品から${days}日`:''}${l.sssId?' ・SSS連携':''}</div>
+    <div class="s"><span class="badge ${l.status}">${STATUS[l.status]||''}</span> ${esc(folderName(l.folderId))}${days!==null?` ・出品から${days}日`:''}${l.sssId?' ・SSS連携':''}${l.shot?' <span class="badge shot">📷 撮影済み</span>':''}</div>
     <div class="price">${l.price?yen(l.price):'価格未設定'}</div></div></div>
     <div class="acts"><button class="btn sm" data-act="cpAll" data-id="${esc(l.id)}">全部コピー</button><button class="btn sm" data-act="cpTitle" data-id="${esc(l.id)}">商品名</button><button class="btn sm" data-act="cpDesc" data-id="${esc(l.id)}">説明文</button>
     <button class="btn sm" data-act="openPlat" data-id="${esc(l.id)}">出品先を開く</button><button class="btn sm" data-act="toCalc" data-id="${esc(l.id)}">利益チェック</button><button class="btn sm pri" data-act="edit" data-id="${esc(l.id)}">編集</button>${l.status==='sold'&&l.sssId&&l.soldPrice!==undefined&&l.soldPrice!==''?`<button class="btn sm pri" data-act="toSSS" data-id="${esc(l.id)}">SSSで売却登録</button>`:''}</div></div>`}).join('')||'<div class="empty">出品メモはまだありません。右下の「＋新規」から作成できます。</div>'}
@@ -215,10 +218,10 @@ function openEdit(id){const l=getL(id);if(!l)return;EDIT=l;l.gen=Object.assign(d
 function sel(name,opts,cur,attr){return `<select ${attr}>${opts.map(([v,t])=>`<option value="${esc(v)}"${String(v)===String(cur)?' selected':''}>${esc(t)}</option>`).join('')}</select>`}
 function drawEdit(keep){
   const l=EDIT,g=l.gen;const y=keep?$('#shB').scrollTop:0;
-  const h=`<div class="fld"><label>商品名</label><input data-lf="title" value="${esc(l.title)}"></div>
+  const h=`${l.shot?`<div style="margin-bottom:8px"><span class="badge shot">📷 撮影済み${l.shotDate?`（${esc(l.shotDate)}）`:''}</span></div>`:''}<div class="fld"><label class="row" style="display:flex"><span class="grow">商品名</span><button class="btn sm" data-act="cpField" data-f="title">コピー</button></label><input data-lf="title" value="${esc(l.title)}"></div>
   <div class="note" id="tcount" style="margin:-8px 0 12px"></div>
   ${genHTML()}
-  <div class="fld"><label>商品説明文</label><textarea data-lf="desc" style="min-height:220px">${esc(l.desc)}</textarea></div>
+  <div class="fld"><label class="row" style="display:flex"><span class="grow">商品説明文</span><button class="btn sm" data-act="cpField" data-f="desc">コピー</button></label><textarea data-lf="desc" style="min-height:220px">${esc(l.desc)}</textarea></div>
   <div class="grid3"><div class="fld"><label>金額（販売価格）</label><input data-lf="price" data-n="1" inputmode="numeric" value="${l.price||''}"></div>
   <div class="fld"><label>仕入価格（任意）</label><input data-lf="cost" data-n="1" inputmode="numeric" value="${l.cost||''}"></div>
   <div class="fld"><label>仕入送料（任意）</label><input data-lf="costShip" data-n="1" inputmode="numeric" value="${l.costShip||''}"></div></div>
@@ -232,7 +235,7 @@ function drawEdit(keep){
   <div class="imgs">${(l.images||[]).map((src,i)=>`<div class="im"><img src="${src}" alt=""><button class="x" data-act="imgDel" data-i="${i}">✕</button></div>`).join('')}</div>
   ${(l.images||[]).length<8?`<div class="fld" style="margin-top:8px"><input type="file" id="imgIn" accept="image/*" multiple></div>`:''}
   ${soldInfoHTML(l)}
-  <div class="btns" style="margin-top:16px"><button class="btn" data-act="dupRelist">再出品用に複製</button><button class="btn dng" data-act="delMemo">削除</button></div>`;
+  <div class="btns" style="margin-top:16px"><button class="btn pri" data-act="toKoma">📷 KOMAで撮影</button><button class="btn" data-act="dupRelist">再出品用に複製</button><button class="btn dng" data-act="delMemo">削除</button></div>`;
   openSheet(l.title||'出品メモ',h);$('#shB').scrollTop=y;updGen();updCount();
 }
 function updCount(){const e=$('#tcount');if(!e||!EDIT)return;const n=[...EDIT.title].length;e.innerHTML=`${n}文字${n>40?' <span class="warn">40文字を超えています</span>':''}`}
@@ -335,7 +338,8 @@ function genHTML(){const g=EDIT.gen;
   <div class="fld"><label>関連タグ（任意・スペースかカンマ区切り）</label><input data-g="tags" value="${esc(g.tags)}"></div>
   <div class="chips wrap" id="tagChips"></div>
   <div class="sec">プレビュー</div><div class="pvt" id="pvT"></div><div class="note" id="pvC"></div><div class="pv" id="pvB" style="margin-top:6px"></div>
-  <button class="btn pri" style="width:100%;margin-top:10px" data-act="genApply">商品名・説明文に反映する</button></div>`}
+  <button class="btn pri" style="width:100%;margin-top:10px" data-act="genApply">商品名・説明文に反映する</button>
+  <div class="btns" style="margin-top:8px"><button class="btn sm" data-act="genCopy" data-w="t">タイトルをコピー</button><button class="btn sm" data-act="genCopy" data-w="b">本文をコピー</button><button class="btn sm" data-act="genCopy" data-w="both">両方コピー</button></div></div>`}
 function updGen(){if(!EDIT||!$('#pvT'))return;const g=EDIT.gen;const t=genTitle(g),n=[...t].length;
   $('#pvT').textContent=t||'（作品名を入力してください）';$('#pvC').innerHTML=`${n}文字${n>40?' <span class="warn">40文字を超えています（メルカリの商品名上限）</span>':''}`;$('#pvB').textContent=genBody(g);
   const cur=new Set(tagList(g.tags));$('#tagChips').innerHTML=tagCands(g).map(c=>`<button class="chip ${cur.has(c)?'on':''}" data-act="tagTog" data-t="${esc(c)}">#${esc(c)}</button>`).join('')}
@@ -555,7 +559,8 @@ function dataOpen(){const s=S.settings;openSheet('データ',`<div class="card">
   <div class="card"><div class="sec" style="margin-top:0">POSTAのデータを取り込む（全データを置き換え）</div><div class="fld"><input type="file" id="impF" accept=".json,application/json,text/plain"></div>
   <div class="fld"><textarea id="impT" placeholder="または書き出したJSONを貼り付け" style="min-height:80px"></textarea></div><button class="btn dng" data-act="imp">取り込む（全置換）</button></div>
   <div class="card"><div class="sec" style="margin-top:0">SSS連携</div><button class="btn" data-act="sssOpen">SSSバックアップから取り込む（追加のみ）</button>
-  <div class="fld" style="margin-top:10px"><label>SSSのURL（「SSSで売却登録」で開く先）</label><input data-set="sssUrl" value="${esc(s.sssUrl)}"></div></div>
+  <div class="fld" style="margin-top:10px"><label>SSSのURL（「SSSで売却登録」で開く先）</label><input data-set="sssUrl" value="${esc(s.sssUrl)}"></div>
+  <div class="fld"><label>KOMAのURL（「KOMAで撮影」で開く先）</label><input data-set="komaUrl" value="${esc(s.komaUrl)}"></div></div>
   <div class="card"><div class="sec" style="margin-top:0">既定値</div><div class="grid2"><div class="fld"><label>新規メモの出品先</label>${sel('',Object.entries(PLAT).map(([k,v])=>[k,v.name]),s.launch,'data-set="launch"')}</div>
   <div class="fld"><label>計算の販路</label>${sel('',CHP.filter(p=>p.k!=='custom').map(p=>[p.k,p.name]),s.channel,'data-set="channel"')}</div></div></div>
   <div class="note">出品メモ ${S.listings.length}件／定型文 ${S.templates.length}件</div>`)}
@@ -588,6 +593,13 @@ const A={
   dupRelist(){const c=JSON.parse(JSON.stringify(EDIT));Object.assign(c,{id:uid(),status:'relist',listedAt:null,createdAt:Date.now(),updatedAt:Date.now()});delete c.sssId;S.listings.unshift(c);save();toast('「再出品待ち」として複製しました');openEdit(c.id)},
   delMemo(){if(!confirm('この出品メモを削除しますか？'))return;S.listings=S.listings.filter(l=>l.id!==EDIT.id);save();EDIT=null;closeSheet()},
   tagTog(b){const g=EDIT.gen;const t=b.dataset.t;let a=tagList(g.tags);a=a.includes(t)?a.filter(x=>x!==t):[...a,t];g.tags=a.join(' ');const i=document.querySelector('[data-g="tags"]');if(i)i.value=g.tags;touch();updGen()},
+  genCopy(b){const g=EDIT.gen;if(!g.work){toast('作品名を入力してください');return}const t=genTitle(g),d=genBody(g);copyText(b.dataset.w==='t'?t:b.dataset.w==='b'?d:t+'\n\n'+d)},
+  cpField(b){if(!EDIT)return;copyText(String(EDIT[b.dataset.f]||''))},
+  toKoma(){if(!EDIT)return;flushSave();const base=String(S.settings.komaUrl||'').trim();if(!base){toast('データ画面でKOMAのURLを入力してください');return}
+    const l=EDIT,g=l.gen||{};const tri=v=>v==='all'||v==='part'?v:'none';
+    const ps=[['src','posta'],['sssId',l.sssId||''],['postaId',l.id],['title',l.title],['work',g.work],['setk',KOMASETK[g.kind]||''],['shoban',tri(g.shohan)],['obi',tri(g.obi)],['bonus',(g.tokuten||g._tok)?'1':''],['cond',BADCOND.includes(l.condition)?'bad':'']]
+      .filter(([k,v])=>v!==undefined&&v!==null&&String(v)!=='').map(([k,v])=>k+'='+encodeURIComponent(String(v))).join('&');
+    location.href=base+(base.includes('?')?'&':'?')+ps},
   genApply(){const g=EDIT.gen;const t=genTitle(g),d=genBody(g);if(!g.work){toast('作品名を入力してください');return}
     if(EDIT.title&&EDIT.title!==t&&!confirm('商品名に入力済みの内容を、生成したタイトルで上書きしますか？')){}else EDIT.title=t;
     if(EDIT.desc&&EDIT.desc!==d&&!confirm('説明文に入力済みの内容を、生成した本文で上書きしますか？')){}else EDIT.desc=d;
@@ -649,7 +661,13 @@ document.addEventListener('change',async e=>{const el=e.target;
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='isbnIn'){e.preventDefault();isbnGo()}});
 window.addEventListener('pagehide',()=>{flushSave();stopScan()});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){flushSave();stopScan()}});
-render();sssFromURL();
+function komaFromURL(){let q;try{q=new URLSearchParams(location.search)}catch(e){return}
+  if(q.get('src')!=='koma'||q.get('act')!=='shot')return;try{history.replaceState(null,'',location.pathname+location.hash)}catch(e){}
+  const pid=q.get('postaId')||'',sid=q.get('sssId')||'';
+  const l=(pid&&getL(pid))||(sid&&S.listings.find(x=>x.sssId===sid))||null;
+  if(!l){setTimeout(()=>toast('KOMAの撮影完了：対象の出品メモが見つかりませんでした'),300);return}
+  l.shot=true;l.shotDate=ymd(Date.now());l.updatedAt=Date.now();save();render();setTimeout(()=>toast('KOMAの撮影完了を反映しました'),300)}
+render();sssFromURL();komaFromURL();
 </script>
 </body>
 </html>
