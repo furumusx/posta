@@ -156,7 +156,7 @@ function presets(){const t=Date.now();const P=[
   RECV_TPL];
   return P.map(([c,ti,b],i)=>({id:uid()+i,category:c,title:ti,body:b,createdAt:t+i,updatedAt:t+i}))}
 function defState(){return{folders:['漫画セット','単巻','その他'].map((n,i)=>({id:uid()+'f'+i,name:n})),listings:[],templates:presets(),records:[],
-  settings:{launch:'mercari',channel:'mercari',target:30,sssUrl:'https://furumusx.github.io/SedoScope/',komaUrl:'https://furumusx.github.io/koma/'}}}
+  settings:{launch:'mercari',channel:'mercari',target:30,sssUrl:'https://furumusx.github.io/SedoScope/',komaUrl:'https://furumusx.github.io/KOMA/'}}}
 function fix(s){const d=defState();if(!s||typeof s!=='object')return d;
   for(const k of ['folders','listings','templates','records'])if(!Array.isArray(s[k]))s[k]=[];
   s.settings=Object.assign(d.settings,s.settings||{});return s}
