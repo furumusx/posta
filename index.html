@@ -85,8 +85,10 @@ details.gset{margin-top:var(--sp3)}
 details.gset summary{list-style:none;font-size:13px;color:var(--mut);margin:0 16px 6px;cursor:pointer}
 details.gset summary::-webkit-details-marker{display:none}
 details.gset summary::after{content:" ▸"}details.gset[open] summary::after{content:" ▾"}
-@media (max-height:700px){.gr{min-height:46px}.gr input{height:44px}.gb{min-height:44px}.gl{margin-top:10px}}
-@media (max-height:600px){main{padding-top:6px}.gr{min-height:41px;font-size:16px}.gr input{height:39px;font-size:16px}.gb{min-height:40px;font-size:16px}.gl{margin:6px 16px 4px}.gn{margin-top:3px}.gc[style]{margin-top:6px!important}header{padding-bottom:6px}}
+@media (max-height:760px){.gr{min-height:44px;font-size:16px}.gr input{height:42px;font-size:16px}.gb{min-height:44px;font-size:16px}.gl{margin:10px 16px 4px}.gn{margin-top:3px;font-size:11px}
+  .gbtns{display:flex}.gbtns .gb{flex:1}.gbtns .gb+.gb::before{top:8px;bottom:8px;left:0;right:auto;border-top:0;border-left:1px solid var(--line)}}
+@media (max-height:700px){main{padding-top:6px}.gr{min-height:39px}.gr input{height:37px}.gb{min-height:39px}.gl{margin:7px 16px 3px;font-size:12px}.gn{margin-top:2px;line-height:1.35}.gc[style]{margin-top:7px!important}details.gset{margin-top:8px}}
+@media (max-height:600px){main{padding-top:4px}.gr{min-height:35px;font-size:15px}.gr input{height:33px;font-size:16px}.gb{min-height:36px;font-size:15px}.gl{margin:5px 16px 2px;font-size:12px}.gn{margin-top:2px;font-size:11px;line-height:1.3}.gc[style]{margin-top:5px!important}header{padding-top:calc(env(safe-area-inset-top,0px) + 4px);padding-bottom:4px}details.gset{margin-top:6px}}
 /* シート */
 #sheet{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column}
 #sheet[hidden]{display:none}
@@ -109,7 +111,7 @@ details.gset summary::after{content:" ▸"}details.gset[open] summary::after{con
 <div id="toast"></div>
 <script>
 'use strict';
-const APP_VER='2.0.1';
+const APP_VER='2.0.2';
 const KEY='posta_v2',OLD_KEY='posta_v1';
 const TCATS=['買った時','売れた時','コメント','受取評価','その他'];
 const VARS=['{商品名}','{価格}','{状態}','{発送方法}','{今日}'];
@@ -212,22 +214,26 @@ function fillVals(){return FILL.vs.map((_,i)=>{const e=document.querySelector(`[
    計算（販売価格・原価・配送料・手数料% → 利益・利益率）
    ============================================================ */
 let C=null;
-function calcReset(){C={sale:'',cost:'',ship:String(S.settings.ship??''),fee:String(S.settings.feePct??10),res:null}}
+function calcReset(){const keep=C?{lp:C.lp,lv:C.lv}:{lp:'',lv:''};C={...keep,sale:'',cost:'',ship:String(S.settings.ship??''),fee:String(S.settings.feePct??10),res:null}}
 calcReset();
 function calcRun(){const sale=num(C.sale),cost=num(C.cost)||0,ship=num(C.ship)||0,fp=num(C.fee);
   if(!(sale>0)){toast('販売価格を入力してください');return}if(!isFinite(fp)){toast('手数料（%）を入力してください');return}
   const fee=Math.round(sale*fp/100);const profit=sale-cost-ship-fee;C.res={profit,rate:profit/sale*100,fee};render()}
+// v2.0.2：1冊あたりの定価＝定価÷巻数（四捨五入）。利益計算とは独立・入力のたびに結果だけ更新
+function perVolTxt(){const lp=num(C.lp),lv=num(C.lv);if(!isFinite(lp)||!isFinite(lv)||lv<=0||C.lp===''||C.lv==='')return '—';return yen(Math.round(lp/lv))}
 function calcHTML(){const r=C.res;
   const row=(k,l,u,mode)=>`<label class="gr"><span class="lb">${l}</span><input data-c="${k}" inputmode="${mode||'numeric'}" value="${esc(C[k])}" placeholder="0" enterkeyhint="done"><span class="u">${u}</span></label>`;
   const srow=(k,l,u,mode)=>`<label class="gr"><span class="lb">${l}</span><input data-set="${k}" inputmode="${mode||'numeric'}" value="${esc(S.settings[k])}" enterkeyhint="done"><span class="u">${u}</span></label>`;
   return `<div class="gl">入力項目</div>
   <div class="gc">${row('sale','販売価格','円')}${row('cost','原価','円')}${row('ship','配送料','円')}${row('fee','手数料','%','decimal')}</div>
   <div class="gn">梱包費は配送料に含めて入力してください。</div>
-  <div class="gc" style="margin-top:var(--sp3)"><button class="gb" data-act="calcRun">計算する</button><button class="gb" data-act="calcClear">クリア</button></div>
+  <div class="gc gbtns" style="margin-top:var(--sp3)"><button class="gb" data-act="calcRun">計算する</button><button class="gb" data-act="calcClear">クリア</button></div>
   <div class="gl">計算結果</div>
   <div class="gc"><div class="gr"><span class="lb">利益</span><span class="val ${r?(r.profit>=0?'pos':'neg'):''}" id="rP">${r?yen(r.profit):'—'}</span></div>
   <div class="gr"><span class="lb">利益率</span><span class="val" id="rR">${r?r.rate.toFixed(1)+'%':'—'}</span></div></div>
   <div class="gn" id="rF">${r?`販売手数料 ${yen(r.fee)} を差し引いています。`:'&nbsp;'}</div>
+  <div class="gl">1冊あたりの定価</div>
+  <div class="gc">${row('lp','定価（全巻合計）','円')}${row('lv','巻数','冊')}<div class="gr"><span class="lb">1冊あたり</span><span class="val" id="rU">${perVolTxt()}</span></div></div>
   <details class="gset"${UI.setOpen?' open':''} ontoggle="UI.setOpen=this.open"><summary>設定（計算の初期値）</summary>
   <div class="gc">${srow('feePct','手数料率の初期値','%','decimal')}${srow('ship','配送料の初期値','円')}</div>
   <div class="gn">「クリア」を押したときや、次にアプリを開いたときの初期値になります。</div>
@@ -268,7 +274,7 @@ document.addEventListener('click',e=>{
   const b=e.target.closest('[data-act]');if(!b)return;const f=ACT[b.dataset.act];if(f){e.preventDefault();f(b,e)}});
 document.addEventListener('input',e=>{const el=e.target;
   if(el.id==='tq'){UI.tq=el.value;clearTimeout(UI.tqT);UI.tqT=setTimeout(()=>{const pos=el.selectionStart;render();const n=$('#tq');if(n){n.focus();try{n.setSelectionRange(pos,pos)}catch(_){}}},250);return}
-  if(el.dataset.c){C[el.dataset.c]=el.value;return}
+  if(el.dataset.c){C[el.dataset.c]=el.value;if(el.dataset.c==='lp'||el.dataset.c==='lv'){const u=$('#rU');if(u)u.textContent=perVolTxt()}return}
   if(el.dataset.fv!==undefined&&FILL){const t=S.templates.find(x=>x.id===FILL.id);const pv=$('#fillPv');if(t&&pv)pv.textContent=fillText(t.body,FILL.vs,fillVals())}});
 document.addEventListener('change',e=>{const el=e.target;
   if(el.dataset.set){const k=el.dataset.set;const n=num(el.value);if(!isFinite(n)||n<0||(k==='feePct'&&n>=100)){toast('数字で入力してください');el.value=S.settings[k];return}
