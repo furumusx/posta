@@ -98,20 +98,109 @@ details.gset summary::after{content:" ▸"}details.gset[open] summary::after{con
 .pv{white-space:pre-wrap;background:var(--card2);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--sp2);font-size:13px;line-height:1.6;overflow-wrap:anywhere}
 #toast{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 60px);z-index:70;background:#2a3140;color:#fff;padding:var(--sp3) var(--sp4);border-radius:var(--r-md);font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90%;text-align:center}
 #toast.on{opacity:1}
+/* コピペ出品モード（v2.1.0） */
+:root{--cp:#e60023;--cpb:#1f6feb;--cpok:#2e9e4f;--cpng:#c81e1e;--cpold:#b3261e;--cpnew:#23713a}
+@media (prefers-color-scheme:dark){:root{--cp:#ff3b5c;--cpb:#4b8dff;--cpok:#3cc36a;--cpng:#ff5a5a;--cpold:#ff7b72;--cpnew:#4fd27f}}
+header .hsub{font-size:13px;font-weight:700;white-space:nowrap}
+header .hcnt{display:inline-flex;flex-direction:column;align-items:center;line-height:1}
+header .hcnt b{background:var(--cp);color:#fff;border-radius:999px;min-width:26px;height:26px;padding:0 6px;display:inline-flex;align-items:center;justify-content:center;font-size:14px}
+header [hidden]{display:none!important}
+header .hcnt small{font-size:10px;color:var(--mut);margin-top:2px}
+nav#tabs button .nb{position:absolute;top:5px;left:calc(50% + 8px);background:var(--cp);color:#fff;border-radius:999px;font-size:10px;min-width:16px;height:16px;padding:0 4px;line-height:16px;font-weight:700}
+.cpt{font-size:20px;font-weight:800;color:var(--cp)}
+.qtabs{display:flex;gap:var(--sp2);margin:var(--sp3) 0}
+.qtabs button{flex:1;min-width:0;height:48px;border:0;border-radius:12px;background:var(--card2);color:var(--mut);font-weight:700;font-size:15px;padding:0 4px;white-space:nowrap}
+.qtabs button.on{background:var(--cp);color:#fff}
+.qtabs button:disabled{opacity:.45;cursor:default}
+.qtabs button .bd{display:inline-block;min-width:1.4em;font-variant-numeric:tabular-nums}
+.qc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:var(--sp3) var(--sp4);margin-bottom:var(--sp3);cursor:pointer}
+.qc.hold,.cphold{background:rgba(200,30,30,.06);border:2px solid rgba(200,30,30,.35)}
+.qh{display:flex;align-items:center;gap:var(--sp2);flex-wrap:wrap;margin-bottom:6px}
+.kb{display:inline-block;border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700;color:#fff;background:var(--cpb);white-space:nowrap}
+.kb.draft{background:#c2410c}.kb.pricecut{background:#9a6200}.kb.hold{background:var(--cpng)}.kb.done{background:var(--cpok)}
+.qh .pl{font-size:13px;color:var(--mut)}
+.qh .hr{font-size:14px;font-weight:700;color:var(--cpng)}
+.sc{margin-left:auto;font-size:11px;border-radius:6px;padding:1px 8px;border:1px solid var(--line);color:var(--mut);white-space:nowrap}
+.sc.doing{color:var(--cpb);border-color:var(--cpb)}.sc.hold{color:var(--cpng);border-color:var(--cpng)}
+.qc .w{font-size:17px;font-weight:700;overflow-wrap:anywhere}
+.qc .l{font-size:14px;overflow-wrap:anywhere}
+.qc .m{font-size:13px;color:var(--mut)}
+.old{color:var(--cpold)}.new{color:var(--cpnew)}
+.qf{display:flex;justify-content:flex-end;margin-top:var(--sp2)}
+.cpbtn{border:0;border-radius:999px;min-height:44px;padding:0 18px;font-weight:700;font-size:14px;background:var(--cpb);color:#fff;white-space:nowrap}
+.cpbtn.red{background:var(--cpng)}.cpbtn.gray,.cpbtn.done{background:var(--card2);color:var(--mut)}
+.cpbtn:disabled{background:var(--card2);color:var(--mut);opacity:.6;cursor:not-allowed}
+.cpinfo{background:rgba(31,111,235,.08);border-radius:18px;padding:var(--sp3) var(--sp4);margin-top:var(--sp3)}
+.cpinfo b{color:var(--cpb)}
+.cpbar{display:flex;align-items:center;gap:var(--sp2);margin-bottom:var(--sp2)}
+.ih{display:flex;gap:var(--sp3);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:var(--sp3)}
+.th{width:84px;height:84px;border-radius:10px;flex:none;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.th b{font-size:20px;line-height:1.1}.th small{font-size:11px;opacity:.85}
+.ih .w{font-size:18px;font-weight:800;overflow-wrap:anywhere;line-height:1.3}
+.ih .s{font-size:14px;color:var(--mut);overflow-wrap:anywhere}
+.lks{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.lk{border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700;white-space:nowrap}
+.lk.sss{background:rgba(36,86,166,.12);color:#2f6fd0}.lk.koma{background:rgba(35,113,58,.12);color:#2a8a47}.lk.ai{background:rgba(154,98,0,.12);color:#b07400}
+.ptabs{display:flex;gap:var(--sp2);margin:var(--sp3) 0}
+.ptabs button{flex:1;min-width:0;height:50px;border:0;border-radius:12px;background:var(--card2);color:var(--mut);font-weight:700;font-size:15px;padding:0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ptabs button.on{background:var(--cp);color:#fff}
+.ptabs button:disabled{opacity:.4;cursor:default;font-weight:400}
+.pgh{display:flex;justify-content:space-between;font-size:14px;color:var(--mut)}.pgh b{color:var(--cp)}
+.pgb{height:10px;border-radius:5px;background:var(--line);margin:4px 0 var(--sp3);overflow:hidden}.pgb i{display:block;height:100%;background:var(--cp);border-radius:5px}
+.cps{font-size:15px;font-weight:700;margin:var(--sp3) 2px var(--sp2)}
+.phs{display:grid;grid-template-columns:repeat(auto-fill,minmax(66px,1fr));gap:var(--sp2)}
+.phs button{aspect-ratio:1;border:0;border-radius:10px;color:#fff;position:relative;font-size:12px;font-weight:600;padding:26px 3px 4px;line-height:1.25;opacity:.55;overflow-wrap:anywhere}
+@media (min-width:600px){.phs{grid-template-columns:repeat(6,1fr)}.phs button{font-size:14px}}
+.phs button.on{opacity:1}
+.phs button.on::after{content:"✓";position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;background:var(--cpok);color:#fff;font-size:13px;line-height:22px;font-weight:700}
+.phs button:disabled{cursor:not-allowed}
+.fc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:var(--sp3) var(--sp4);margin-bottom:var(--sp3)}
+.fc .hd{display:flex;align-items:center;justify-content:space-between;gap:var(--sp2);font-size:14px;color:var(--mut);font-weight:700}
+.cnt{font-weight:400;font-variant-numeric:tabular-nums;white-space:nowrap}.cnt.over{color:var(--neg);font-weight:700}
+.fc .v{font-size:17px;font-weight:600;white-space:pre-wrap;overflow-wrap:anywhere;margin:6px 0}
+.fc .v.long{font-size:14px;font-weight:400;line-height:1.65;max-height:12em;overflow:auto}
+.fc .cur{font-size:14px;margin-top:6px;overflow-wrap:anywhere;white-space:pre-wrap}
+.fc .ft{display:flex;align-items:center;gap:var(--sp2);flex-wrap:wrap;margin-top:var(--sp2)}
+.fc .ft .cpbtn{margin-left:auto}
+.ck{border:1px solid var(--line);background:var(--card2);color:var(--mut);border-radius:999px;height:32px;padding:0 12px;font-size:13px;white-space:nowrap}
+.ck.on{background:rgba(46,158,79,.12);border-color:var(--cpok);color:var(--cpok);font-weight:700}
+.ck:disabled{opacity:.5;cursor:not-allowed}
+.vb{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;background:rgba(36,86,166,.12);color:#2f6fd0}
+.edm{font-size:12px;color:var(--cpb)}
+.sgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:var(--sp2) var(--sp3)}
+.sgs .fc{margin-bottom:0}
+.sgs .sel{font-size:16px;font-weight:700;overflow-wrap:anywhere;margin:4px 0}
+.pp{background:rgba(255,170,0,.10);border:1px solid rgba(200,140,0,.35);border-radius:16px;padding:var(--sp3) var(--sp4);margin-top:var(--sp3)}
+.pp .hd{display:flex;justify-content:space-between;gap:var(--sp2);flex-wrap:wrap;font-weight:700;color:#b07400}
+.pp .hd span{font-weight:400}
+.pp .r{display:flex;justify-content:space-between;align-items:center;gap:var(--sp2);font-size:16px;min-height:34px}
+.pp .r b{font-variant-numeric:tabular-nums;font-size:17px}
+.pp .r input{width:120px;text-align:right;font-weight:700;font-size:17px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);height:40px;padding:0 8px;font-variant-numeric:tabular-nums}
+.pp .d{font-size:14px;color:var(--mut);overflow-wrap:anywhere}
+.pp .nx{font-size:14px;color:#b07400;margin-top:4px;overflow-wrap:anywhere}
+.pp .pos{color:var(--pos)}.pp .neg{color:var(--neg)}
+.cta{display:block;width:100%;min-height:62px;border:0;border-radius:31px;background:var(--cp);color:#fff;font-size:18px;font-weight:800;margin-top:var(--sp4);padding:0 16px}
+.cta:disabled{opacity:.45;cursor:not-allowed}
+.cpdone{background:rgba(46,158,79,.10);border:1px solid var(--cpok);border-radius:16px;padding:var(--sp3) var(--sp4);margin-top:var(--sp4);overflow-wrap:anywhere}
+.cpmemo textarea{width:100%;min-height:90px;background:var(--card2);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--sp2)}
+.hi{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:var(--sp3) var(--sp4);margin-bottom:var(--sp2)}
+.hi .rs{font-size:13px;overflow-wrap:anywhere;margin-top:4px}
+.cpset .gr input{max-width:110px}
 </style>
 </head>
 <body>
-<header><h1>POSTA</h1><span class="v" id="ver"></span></header>
+<header><h1>POSTA</h1><span class="hsub" id="hsub" hidden>コピペ出品モード</span><span class="hcnt" id="hcnt" hidden></span><span class="v" id="ver"></span></header>
 <main id="view"></main>
 <nav id="tabs">
   <button data-tab="tpl"><span class="i">💬</span>定型文</button>
   <button data-tab="calc"><span class="i">🧮</span>計算</button>
+  <button data-tab="cp"><span class="i">📋</span>コピペ出品<span class="nb" id="nb" hidden></span></button>
 </nav>
 <div id="sheet" hidden><div class="sh"><h2 id="shT"></h2><button class="btn sm" data-act="closeSheet">閉じる</button></div><div class="sb" id="shB"></div></div>
 <div id="toast"></div>
 <script>
 'use strict';
-const APP_VER='2.0.3';
+const APP_VER='2.1.0';
 const KEY='posta_v2',OLD_KEY='posta_v1';
 const TCATS=['買った時','売れた時','コメント','受取評価','その他'];
 const VARS=['{商品名}','{価格}','{状態}','{発送方法}','{今日}'];
@@ -260,10 +349,302 @@ function oldExport(){let t=null;try{t=localStorage.getItem(OLD_KEY)}catch(e){}if
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'application/json'}));a.download=`posta_backup_${ymd(Date.now()).replace(/-/g,'')}.json`;
   document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);toast('書き出しました（「ファイル」アプリに保存されます）')}
 
+/* ============================================================
+   コピペ出品モード（v2.1.0）
+   AI（国ちゃん）が用意した下書き・修正案を、ユーザーがコピー＆ペーストで実アプリへ移すための作業画面。
+   ログイン・自動投稿・外部通信はしない。データは端末内（localStorage の posta_cp_v1）だけに置く。
+   既存の posta_v2（定型文・設定）とは別のキーにして、互いに壊さないようにする。
+   ============================================================ */
+const CP_KEY='posta_cp_v1';
+const PLATS=['mercari','yahooflea','rakuma'];
+const PLAT_J={mercari:'メルカリ',yahooflea:'ヤフーフリマ',rakuma:'ラクマ'};
+const KINDS=['fix','draft','pricecut'];
+const KIND_J={fix:'修正',draft:'新規下書き',pricecut:'値下げ'};
+const KIND_CARD={fix:'修正カード',draft:'新規下書き',pricecut:'値下げカード'};
+const DONE_J={fix:'修正済み',draft:'出品済み',pricecut:'値下げ済み'};
+const DONE_CODE={fix:'fixed',draft:'listed',pricecut:'priceCut'};
+const ST_J={todo:'未処理',doing:'処理中',hold:'保留',done:'完了'};
+const CP_MAX_FILE=1024*1024;
+function cpDefSettings(){return{fee:{mercari:10,yahooflea:5,rakuma:10},titleMax:{mercari:40,yahooflea:65,rakuma:80},descMax:{mercari:1000,yahooflea:1000,rakuma:1000}}}
+function cpFix(o){if(!o||typeof o!=='object'||Array.isArray(o))o={};
+  o.cards=Array.isArray(o.cards)?o.cards.filter(c=>c&&typeof c==='object'&&c.id&&KINDS.includes(c.kind)&&Array.isArray(c.platform)):[];
+  o.cards.forEach(c=>{if(!c.st||typeof c.st!=='object')c.st={};if(!Array.isArray(c.fields))c.fields=[];if(!Array.isArray(c.photos))c.photos=[];if(!c.per)c.per={};if(!c.links)c.links={}});
+  o.importedVer=Number.isFinite(o.importedVer)?o.importedVer:0;
+  const d=cpDefSettings();if(!o.settings||typeof o.settings!=='object')o.settings={};
+  for(const k of Object.keys(d))o.settings[k]=Object.assign({},d[k],o.settings[k]||{});
+  return o}
+function cpLoad(){try{const t=localStorage.getItem(CP_KEY);if(t)return cpFix(JSON.parse(t))}catch(e){}return cpFix({})}
+let CP=cpLoad();
+function cpSave(){try{localStorage.setItem(CP_KEY,JSON.stringify(CP));return true}catch(e){toast('保存できませんでした（端末の保存容量不足の可能性）');return false}}
+
+/* ---------- 取り込みデータの正規化（外部ファイルなので、型・長さ・選択肢を絞ってから保存する） ---------- */
+const cpS=(v,max=5000)=>v==null?'':String(v).slice(0,max);
+const cpN=v=>{const n=num(v);return isFinite(n)?n:null};
+const cpDate=v=>/^\d{4}-\d{2}-\d{2}$/.test(String(v||''))?String(v):'';
+function cpNormFields(a){if(!Array.isArray(a))return null;const out=[],seen={};
+  for(const f of a.slice(0,40)){if(!f||typeof f!=='object')continue;
+    const label=cpS(f.label,40).trim();if(!label)continue;seen[label]=(seen[label]||0)+1;
+    const o={key:seen[label]>1?label+'#'+seen[label]:label,type:f.type==='select'?'select':'copy',label,value:cpS(f.value)};
+    if(f.currentValue!=null&&f.currentValue!=='')o.currentValue=cpS(f.currentValue);
+    if(f.badge)o.badge=cpS(f.badge,30);if(f.role==='title'||f.role==='desc')o.role=f.role;out.push(o)}
+  return out}
+function cpNormPrice(p){if(!p||typeof p!=='object')return null;const o={};
+  for(const k of ['price','shipping','packing','cost','floor','feePct','market'])if(cpN(p[k])!=null)o[k]=cpN(p[k]);
+  if(o.feePct!=null&&!(o.feePct>=0&&o.feePct<100))delete o.feePct;
+  if(p.nextCut&&typeof p.nextCut==='object'){const d=cpDate(p.nextCut.date),pr=cpN(p.nextCut.price);if(d||pr!=null)o.nextCut={date:d,price:pr}}
+  return o}
+function cpNormPhotos(a){return Array.isArray(a)?a.slice(0,10).map(x=>cpS(x,20).trim()).filter(Boolean):null}
+function cpNorm(r){if(!r||typeof r!=='object')return null;
+  const id=cpS(r.id,100).trim();if(!id||!KINDS.includes(r.kind))return null;
+  const pl=[...new Set((Array.isArray(r.platform)?r.platform:[r.platform]).filter(p=>PLATS.includes(p)))];if(!pl.length)return null;
+  const c={id,kind:r.kind,platform:pl,itemRef:cpS(r.itemRef,200),work:cpS(r.work,200),sub:cpS(r.sub,200),currentPrice:cpN(r.currentPrice),
+    holdReason:r.holdReason?cpS(r.holdReason,200):null,holdDetail:r.holdDetail?cpS(r.holdDetail,1000):'',
+    fields:cpNormFields(r.fields)||[],photos:cpNormPhotos(r.photos)||[],price:cpNormPrice(r.price),links:{},thumb:null,per:{}};
+  if(r.links&&typeof r.links==='object')for(const k of ['sss','koma','ai'])if(r.links[k])c.links[k]=1;
+  if(r.thumb&&typeof r.thumb==='object')c.thumb={text:cpS(r.thumb.text,8),sub:cpS(r.thumb.sub,12),color:/^#[0-9a-fA-F]{3,6}$/.test(r.thumb.color||'')?r.thumb.color:''};
+  if(r.perPlatform&&typeof r.perPlatform==='object')for(const p of pl){const x=r.perPlatform[p];if(!x||typeof x!=='object')continue;const o={};
+    const f=cpNormFields(x.fields);if(f)o.fields=f;const ph=cpNormPhotos(x.photos);if(ph)o.photos=ph;const pr=cpNormPrice(x.price);if(pr)o.price=pr;c.per[p]=o}
+  return c}
+
+/* ---------- 取り込み（バージョンゲート：version が取り込み済み以下なら何もしない） ----------
+   同じ id は AI 側のデータだけ置き換え、ユーザーの作業状態（チェック・手で直した値・メモ）は引き継ぐ。
+   完了済み（履歴にある）カードは置き換えない。取り込みに含まれないカードは消さない。 */
+function cpImport(obj){
+  if(!obj||typeof obj!=='object'||Array.isArray(obj))return{err:'形式が違います（{"version":…,"cards":[…]} のJSONが必要です）'};
+  const v=Number(obj.version);if(!Number.isInteger(v)||v<1)return{err:'version（1以上の整数）がありません'};
+  if(!Array.isArray(obj.cards))return{err:'cards（カードの一覧）がありません'};
+  if(v<=CP.importedVer)return{ignored:true,v,cur:CP.importedVer};
+  const r={v,added:0,replaced:0,keptDone:0,bad:0};const now=new Date().toISOString();
+  for(const raw of obj.cards.slice(0,500)){const n=cpNorm(raw);if(!n){r.bad++;continue}
+    const i=CP.cards.findIndex(x=>x.id===n.id);
+    if(i<0){Object.assign(n,{st:{},memo:'',doneAt:null,importedAt:now,importVer:v});CP.cards.push(n);r.added++;continue}
+    const old=CP.cards[i];if(old.doneAt){r.keptDone++;continue}
+    Object.assign(n,{st:old.st||{},memo:old.memo||'',doneAt:null,importedAt:old.importedAt||now,updatedAt:now,importVer:v});CP.cards[i]=n;r.replaced++}
+  CP.importedVer=v;CP.lastImport=Object.assign({at:now},r);cpSave();return r}
+function cpImportMsg(r){if(r.err)return '取り込めませんでした：'+r.err;
+  if(r.ignored)return `version ${r.v} は取り込み済み（現在 ${r.cur}）なので無視しました`;
+  return `version ${r.v} を取り込みました：追加 ${r.added}・置き換え ${r.replaced}${r.keptDone?`・完了済みのため据え置き ${r.keptDone}`:''}${r.bad?`・読めないカード ${r.bad}`:''}`}
+
+/* ---------- カードの値 ---------- */
+function cpView(c,p){const x=c.per&&c.per[p]||{};const pr=(c.price||x.price)?Object.assign({},c.price||{},x.price||{}):null;
+  return{fields:x.fields||c.fields,photos:x.photos||c.photos,price:pr}}
+function cpSt(c,p){if(!c.st)c.st={};return c.st[p]||(c.st[p]={chk:{},ed:{},done:null})}
+function cpVal(c,p,f){const e=cpSt(c,p).ed[f.key];return e!=null?e:f.value}
+const cpLen=s=>Array.from(String(s)).length;
+function cpRole(f){if(f.role)return f.role;if(/^(商品名|タイトル)$/.test(f.label))return 'title';if(/説明/.test(f.label))return 'desc';return ''}
+function cpMax(f,p){const r=cpRole(f);return r==='title'?CP.settings.titleMax[p]:r==='desc'?CP.settings.descMax[p]:null}
+function cpField(c,p,key){return cpView(c,p).fields.find(f=>f.key===key)}
+function cpPrice(c,p){const e=cpSt(c,p).ed['@price'];if(e!=null)return e;const v=cpView(c,p).price;return v&&v.price!=null?v.price:null}
+function cpFee(c,p){const v=cpView(c,p).price;return v&&v.feePct!=null?v.feePct:Number(CP.settings.fee[p])}
+// 価格パネルの式：手数料=round(販売価格×率)、手取り=販売価格−手数料−送料−梱包、利益=手取り−原価
+function cpCalc(c,p){const v=cpView(c,p).price||{},P=cpPrice(c,p);if(P==null)return null;
+  const rate=cpFee(c,p),fee=Math.round(P*rate/100),ship=v.shipping||0,pack=v.packing||0,net=P-fee-ship-pack;
+  return{P,rate,fee,ship,pack,net,cost:v.cost,profit:v.cost!=null?net-v.cost:null,floor:v.floor,market:v.market,nextCut:v.nextCut}}
+// 進捗の項目：写真（全部チェックで1項目）＋各フィールド＋価格入力（下書き）／価格変更（値下げ）
+function cpItems(c,p){const v=cpView(c,p),s=cpSt(c,p),it=[];
+  if(v.photos.length)it.push({key:'@photos',ok:v.photos.every((l,i)=>s.chk['@ph'+i]===l)});
+  v.fields.forEach(f=>it.push({key:f.key,ok:s.chk[f.key]===cpVal(c,p,f)}));
+  if((c.kind==='draft'||c.kind==='pricecut')&&cpPrice(c,p)!=null)it.push({key:'@price',ok:s.chk['@price']===String(cpPrice(c,p))});
+  return it}
+function cpProg(c,p){const it=cpItems(c,p);return{done:it.filter(x=>x.ok).length,total:it.length}}
+function cpStatus(c){if(c.doneAt)return 'done';if(c.holdReason)return 'hold';
+  return c.platform.some(p=>{const s=c.st&&c.st[p];return s&&(Object.keys(s.chk).length||s.done)})?'doing':'todo'}
+const cpOpen=()=>CP.cards.filter(c=>!c.doneAt);
+const cpMD=d=>{const m=/^\d{4}-(\d{2})-(\d{2})$/.exec(d||'');return m?`${+m[1]}/${+m[2]}`:''};
+function cpDT(iso){if(!iso)return '';const d=new Date(iso);return isNaN(d)?'':`${ymd(d)} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`}
+function cpAddDays(d,n){const t=new Date(d+'T00:00:00');t.setDate(t.getDate()+n);return ymd(t)}
+// 値下げカード：今回の下げ幅で最終ラインまで何回下げられるか（最後の1回は最終ラインで止める）。週1回の改定前提で日付を出す。
+function cpCutPlan(c,p){const k=cpCalc(c,p);if(!k)return null;const cur=c.currentPrice,fl=k.floor;
+  const step=cur!=null?cur-k.P:null;const nc=k.nextCut||{};
+  if(fl==null)return{step,left:null};if(k.P<=fl)return{step,left:0};
+  const st=nc.price!=null&&nc.price<k.P?k.P-nc.price:step;if(!(st>0))return{step,left:null};
+  const left=Math.ceil((k.P-fl)/st);const first=nc.date||cpAddDays(ymd(Date.now()),7);
+  return{step,left,first,last:cpAddDays(first,(left-1)*7)}}
+
+/* ---------- コピー（navigator.clipboard → execCommand（iOS Safari 対応の選択方法）→ 手でコピー用の表示） ---------- */
+function cpCopyLegacy(t){const a=document.createElement('textarea');a.value=t;
+  a.style.cssText='position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;font-size:16px;border:0;padding:0';
+  a.contentEditable='true';a.readOnly=false;document.body.appendChild(a);let ok=false;
+  try{const r=document.createRange();r.selectNodeContents(a);const sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);a.setSelectionRange(0,t.length);ok=document.execCommand('copy');sel.removeAllRanges()}catch(_){ok=false}
+  a.remove();return ok}
+async function cpCopyText(t){
+  if(navigator.clipboard&&navigator.clipboard.writeText){try{await navigator.clipboard.writeText(t);return true}catch(e){}}
+  if(cpCopyLegacy(t))return true;
+  openSheet('手でコピーしてください',`<div class="note" style="margin-bottom:8px">この端末では自動コピーができませんでした。下の文を長押しして「コピー」を選んでください。</div>
+  <div class="fld"><textarea id="cpManual" readonly>${esc(t)}</textarea></div>`);
+  const m=$('#cpManual');if(m){m.focus();m.select()}return false}
+
+/* ---------- 画面 ---------- */
+UI.cv='queue';UI.qk=null;UI.cid=null;UI.cplat={};UI.cpMsg='';
+function cpQk(){if(UI.qk)return UI.qk;const o=cpOpen();return KINDS.find(k=>o.some(c=>c.kind===k))||'fix'}
+function cpPlat(c){const p=UI.cplat[c.id];return c.platform.includes(p)?p:(c.platform.find(x=>!cpSt(c,x).done)||c.platform[0])}
+function cpThumb(c){const t=c.thumb||{};const pal=['#7a4a21','#5b7a99','#6d8f5a','#7d6ba8','#b05a7a','#94744a'];
+  let h=0;for(const ch of c.work)h=(h*31+ch.codePointAt(0))>>>0;
+  return `<div class="th" style="background:${t.color||pal[h%pal.length]}"><b>${esc(t.text||Array.from(c.work).slice(0,2).join(''))}</b>${t.sub?`<small>${esc(t.sub)}</small>`:''}</div>`}
+function cpCopyLabel(c,f){const r=cpRole(f);const n=r==='title'?'タイトル':r==='desc'?'説明文':f.label;return (c.kind==='fix'&&f.currentValue!=null?'修正':'')+n+'をコピー'}
+const cpCut=(s,n)=>{const a=Array.from(String(s));return a.length>n?a.slice(0,n).join('')+'…':a.join('')};
+function cpQCard(c){const st=cpStatus(c),p0=cpPlat(c),v=cpView(c,p0),hold=!!c.holdReason;
+  const plats=c.platform.map(p=>PLAT_J[p]).join('＋');let lines='',btn='';
+  const priceLine=c.currentPrice!=null?`<div class="l">${esc(PLAT_J[c.platform[0]])} ${yen(c.currentPrice)} で出品中</div>`:'';
+  if(hold){lines=priceLine+(c.holdDetail?`<div class="l" style="margin-top:4px">${esc(c.holdDetail)}</div>`:'');
+    btn=`<button class="cpbtn red" data-act="cpOpen" data-id="${esc(c.id)}">現物を見て報告する</button>`}
+  else if(c.kind==='fix'){lines=priceLine+v.fields.slice(0,3).map(f=>f.type==='select'
+      ?(f.currentValue!=null?`<div class="l old">${esc(f.label)}「${esc(f.currentValue)}」</div>`:'')+`<div class="l">${esc(f.label)}は「${esc(cpVal(c,p0,f))}」を選択</div>`
+      :(f.currentValue!=null?`<div class="l old">現在：${esc(cpCut(f.currentValue,40))}</div>`:'')+`<div class="l new">修正：${esc(cpCut(cpVal(c,p0,f),40))}</div>`).join('');
+    const f=v.fields.find(x=>x.type==='copy');
+    btn=f?`<button class="cpbtn${cpSt(c,p0).chk[f.key]===cpVal(c,p0,f)?' done':''}" data-act="cpQCopy" data-id="${esc(c.id)}" data-k="${esc(f.key)}">${esc(cpCopyLabel(c,f))}</button>`
+      :`<button class="cpbtn gray" data-act="cpOpen" data-id="${esc(c.id)}">変更したらチェック</button>`}
+  else if(c.kind==='draft'){const k=cpCalc(c,p0);lines=`${k?`<div class="l">出品予定 ${yen(k.P)}${k.profit!=null?`（利益目安 ${yen(k.profit)}）`:''}</div>`:''}<div class="m">写真 ${v.photos.length}枠・項目 ${v.fields.length}</div>`;
+    btn=`<button class="cpbtn" data-act="cpOpen" data-id="${esc(c.id)}">出品カードを開く</button>`}
+  else{const k=cpCalc(c,p0);lines=`<div class="l">${c.currentPrice!=null?yen(c.currentPrice):'—'} → <b>${k?yen(k.P):'—'}</b>${k&&k.floor!=null?`<span class="m">（最終ライン ${yen(k.floor)}）</span>`:''}</div>`;
+    btn=`<button class="cpbtn" data-act="cpOpen" data-id="${esc(c.id)}">値下げカードを開く</button>`}
+  const pg=hold?'':c.platform.map(p=>{const g=cpProg(c,p);return `${PLAT_J[p]} ${cpSt(c,p).done?'✓':g.done+'/'+g.total}`}).join('・');
+  return `<div class="qc${hold?' hold':''}" data-act="cpOpen" data-id="${esc(c.id)}">
+  <div class="qh">${hold?`<span class="kb hold">最優先・保留</span><span class="hr">${esc(c.holdReason)}</span>`:`<span class="kb ${c.kind}">${KIND_CARD[c.kind]}</span><span class="pl">${esc(plats)}</span>`}<span class="sc ${st}">${ST_J[st]}</span></div>
+  <div class="w">${esc(c.work)}${c.sub?` <span style="font-weight:400;font-size:15px">${esc(c.sub)}</span>`:''}</div>${lines}
+  <div class="qf"><span class="m" style="margin-right:auto;align-self:center">${esc(pg)}</span>${btn}</div></div>`}
+function cpQueueHTML(){const o=cpOpen(),qk=cpQk(),cnt=k=>o.filter(c=>c.kind===k).length;
+  const ord={hold:0,doing:1,todo:2};const list=o.filter(c=>c.kind===qk).sort((a,b)=>ord[cpStatus(a)]-ord[cpStatus(b)]);
+  const nh=CP.cards.length-o.length;
+  return `<div class="cpt">作業キュー</div><div class="note">今日やること（国ちゃんたちが準備済み）</div>
+  <div class="qtabs">${KINDS.map(k=>`<button class="${qk===k?'on':''}" data-act="cpQk" data-v="${k}">${KIND_J[k]} <span class="bd">${cnt(k)}</span></button>`).join('')}</div>
+  ${list.map(cpQCard).join('')||`<div class="empty">${CP.cards.length?`「${KIND_J[qk]}」のカードはありません。`:'カードがありません。<br>「設定・取り込み」から posta_cards_update.json を取り込んでください。'}</div>`}
+  <div class="btns"><button class="btn wide" data-act="cpGo" data-v="hist">履歴（${nh}）</button><button class="btn wide" data-act="cpGo" data-v="set">設定・取り込み</button></div>
+  <div class="cpinfo"><b>終わったカードは履歴へ</b><div class="note" style="color:var(--tx)">履歴は JSON で書き出して、国ちゃん側の出品レジストリ（値下げ日・最終ラインの管理）に引き継げます。</div></div>`}
+function cpFieldHTML(c,p,f,hold){const s=cpSt(c,p),val=cpVal(c,p,f),ok=s.chk[f.key]===val,ed=s.ed[f.key]!=null,k=esc(f.key),dis=hold?' disabled':'';
+  if(f.type==='select')return `<div class="fc"><div class="hd"><span>${esc(f.label)}（選択）</span></div>
+    ${f.currentValue!=null?`<div class="cur old">現在「${esc(f.currentValue)}」</div>`:''}<div class="sel">「${esc(val)}」を選択</div>
+    <div class="ft"><button class="ck${ok?' on':''}" data-act="cpChk" data-k="${k}"${dis}>${ok?'✓ 選択した':'□ 選んだらチェック'}</button></div></div>`;
+  const mx=cpMax(f,p),n=cpLen(val),over=mx&&n>mx;
+  return `<div class="fc"><div class="hd"><span>${esc(f.label)}</span>${ok?`<span style="color:var(--cpok)">✓ コピー済み</span>`:''}<span class="cnt${over?' over':''}">${n}${mx?` / ${mx}`:''}文字${over?`（${n-mx}文字超過）`:''}</span></div>
+    ${f.currentValue!=null?`<div class="cur old">現在：${esc(f.currentValue)}</div><div class="cur new">修正：</div>`:''}
+    <div class="v${cpRole(f)==='desc'||n>60?' long':''}">${esc(val)}</div>
+    ${f.badge?`<span class="vb">${esc(f.badge)}</span> `:''}${ed?'<span class="edm">手で編集済み（取り込みでは上書きしません）</span>':''}
+    <div class="ft"><button class="ck${ok?' on':''}" data-act="cpChk" data-k="${k}"${dis}>${ok?'✓ コピー済み':'□ コピー済みにする'}</button><button class="btn sm" data-act="cpEdit" data-k="${k}"${dis}>編集</button>
+    <button class="cpbtn${ok?' done':''}" data-act="cpCopy" data-k="${k}"${dis}>${esc(cpCopyLabel(c,f))}</button></div></div>`}
+function cpPriceHTML(c,p,hold){const k=cpCalc(c,p);if(!k)return '';const s=cpSt(c,p),ed=s.ed['@price']!=null,v=cpView(c,p).price;
+  const cut=c.kind==='pricecut',ok=s.chk['@price']===String(k.P),dis=hold?' disabled':'';
+  const nx=[k.floor!=null?`最終ライン ${yen(k.floor)}`:'',k.nextCut&&(k.nextCut.date||k.nextCut.price!=null)?`次回値下げ ${cpMD(k.nextCut.date)||'—'} → ${k.nextCut.price!=null?yen(k.nextCut.price):'—'}`:''].filter(Boolean).join(' ｜ ');
+  let plan='';if(cut){const pl=cpCutPlan(c,p);plan=`<div class="r"><span>現在の価格</span><b>${c.currentPrice!=null?yen(c.currentPrice):'—'}</b></div>`;
+    if(pl)plan+=`<div class="nx" id="cpPlan">${pl.left===0?'この価格が最終ラインです（これ以上は下げない）':pl.left==null?'最終ラインまでの回数：—（最終ラインか下げ幅が不明）':`最終ラインまで あと ${pl.left} 回（週1回なら ${cpMD(pl.first)} 〜 ${cpMD(pl.last)} ごろ）`}</div>`}
+  return `<div class="pp"><div class="hd">価格（国ちゃん確定）${k.market!=null?`<span>相場中心 ${yen(k.market)}</span>`:''}</div>${plan}
+  <label class="r"><span>${cut?'次の価格':'販売価格'}</span><span><input data-cpprice inputmode="numeric" value="${k.P}"${dis}> 円</span></label>
+  ${ed&&v&&v.price!=null?`<div class="d">手で変更済み（国ちゃん案 ${yen(v.price)}）<button class="btn sm" data-act="cpPriceReset"${dis}>案に戻す</button></div>`:''}
+  <div class="d" id="cpFeeL">手数料 −${yen(k.fee)}（${k.rate}%）／ 送料 −${yen(k.ship)} ／ 梱包 −${yen(k.pack)}</div>
+  <div class="r"><span>手取り目安</span><b id="cpNet">${yen(k.net)}</b></div>
+  <div class="r"><span>利益目安（原価 ${k.cost!=null?yen(k.cost):'—'}）</span><b id="cpProfit" class="${k.profit==null?'':k.profit>=0?'pos':'neg'}">${k.profit!=null?yen(k.profit):'—'}</b></div>
+  <div class="nx" id="cpFloorW" style="color:var(--neg)"${k.floor!=null&&k.P<k.floor?'':' hidden'}>最終ラインを下回っています</div>
+  ${nx?`<div class="nx">${nx}</div>`:''}
+  ${c.kind==='draft'||cut?`<div class="ft" style="display:flex;margin-top:8px"><button class="ck${ok?' on':''}" data-act="cpChk" data-k="@price"${dis}>${ok?'✓ ':'□ '}${cut?`実アプリで ${yen(k.P)} に変更した`:`販売価格 ${yen(k.P)} を入力した`}</button></div>`:''}</div>`}
+function cpCardHTML(c){const p=cpPlat(c),v=cpView(c,p),s=cpSt(c,p),hold=!!c.holdReason,g=cpProg(c,p),dis=hold?' disabled':'';
+  const sel=v.fields.filter(f=>f.type==='select'),cps=v.fields.filter(f=>f.type!=='select');
+  const all=g.total>0&&g.done===g.total;const lk={sss:'SSS 在庫',koma:'KOMA 撮影済',ai:'AI 作成済'};
+  let fin;
+  if(s.done)fin=`<div class="cpdone"><b>✓ ${PLAT_J[p]}は${DONE_J[c.kind]}</b><div class="note">${esc(cpDT(s.done.at))}${s.done.ref?`／${esc(s.done.ref)}`:''}</div><div class="btns" style="margin-top:8px"><button class="btn sm" data-act="cpUndoPlat">この記録を取り消す</button></div></div>`;
+  else{const lab={draft:'出品完了を記録',fix:'修正済みを記録',pricecut:'値下げ済みを記録'}[c.kind];
+    fin=`<button class="cta" data-act="cpFinish"${!all||hold?' disabled':''}>${hold?'保留中は記録できません':all?lab:`全部${c.kind==='draft'?'貼れたら':'済んだら'}「${lab}」`}</button>`}
+  return `<div class="cpbar"><button class="btn sm" data-act="cpGo" data-v="queue">← キュー</button><span class="kb ${hold?'hold':c.kind}">${hold?'保留':KIND_CARD[c.kind]}</span></div>
+  ${hold?`<div class="fc cphold"><div style="font-weight:800;color:var(--cpng)">保留：${esc(c.holdReason)}</div>${c.holdDetail?`<div class="l" style="margin-top:4px;white-space:pre-wrap">${esc(c.holdDetail)}</div>`:''}<div class="note" style="margin-top:4px">保留中はコピーとチェックができません。現物を確認したら下のメモに書いて、国ちゃんに報告してください。</div></div>`:''}
+  <div class="ih">${cpThumb(c)}<div class="grow"><div class="w">${esc(c.work)}</div>${c.sub?`<div class="s">${esc(c.sub)}</div>`:''}
+  ${c.currentPrice!=null&&c.kind!=='draft'?`<div class="s">${esc(PLAT_J[c.platform[0]])} ${yen(c.currentPrice)} で出品中</div>`:''}
+  <div class="lks">${Object.keys(lk).filter(x=>c.links[x]).map(x=>`<span class="lk ${x}">${lk[x]}</span>`).join('')}</div></div></div>
+  <div class="ptabs">${PLATS.map(x=>{const on=c.platform.includes(x);return `<button class="${x===p?'on':''}" data-act="cpPlat" data-v="${x}"${on?'':' disabled title="このカードの対象外"'}>${PLAT_J[x]}${on&&cpSt(c,x).done?' ✓':''}</button>`}).join('')}</div>
+  <div class="pgh"><span>${c.kind==='draft'?'貼り付け準備':'作業'}</span><b>${g.done} / ${g.total}</b></div><div class="pgb"><i style="width:${g.total?Math.round(g.done/g.total*100):0}%"></i></div>
+  ${v.photos.length?`<div class="cps">写真（KOMAの順番どおり）</div><div class="phs">${v.photos.map((l,i)=>{const pal=['#8a5a2b','#5b7a99','#6d8f5a','#94744a','#7d6ba8','#b05a7a'];
+    return `<button class="${s.chk['@ph'+i]===l?'on':''}" style="background:${pal[i%pal.length]}" data-act="cpPh" data-i="${i}"${dis}>${i+1}. ${esc(l)}</button>`}).join('')}</div><div class="note" style="margin-top:4px">貼った写真をタップしてチェック（写真そのものはKOMA側にあります）。</div>`:''}
+  ${cps.length?`<div class="cps">${c.kind==='fix'?'直す項目（現在 → 修正）':'テキスト'}</div>${cps.map(f=>cpFieldHTML(c,p,f,hold)).join('')}`:''}
+  ${sel.length?`<div class="cps">選ぶ項目</div><div class="sgs">${sel.map(f=>cpFieldHTML(c,p,f,hold)).join('')}</div>`:''}
+  ${cpPriceHTML(c,p,hold)}
+  ${fin}
+  <details class="gset cpmemo"${hold||c.memo?' open':''}><summary>メモ（国ちゃんへの報告）</summary><textarea data-cpmemo placeholder="例：2巻のみ初版でした。帯なし。">${esc(c.memo||'')}</textarea><div class="note">メモは履歴の書き出しに含まれます。</div></details>`}
+function cpHistHTML(){const h=CP.cards.filter(c=>c.doneAt).sort((a,b)=>String(b.doneAt).localeCompare(String(a.doneAt)));
+  return `<div class="cpbar"><button class="btn sm" data-act="cpGo" data-v="queue">← キュー</button><span class="grow" style="font-weight:800">履歴（${h.length}）</span><button class="btn sm" data-act="cpExport"${h.length?'':' disabled'}>JSONで書き出す</button></div>
+  ${h.map(c=>`<div class="hi"><div class="qh"><span class="kb done">${DONE_J[c.kind]}</span><span class="pl">${esc(cpDT(c.doneAt))}</span></div><div class="w" style="font-weight:700">${esc(c.work)} ${esc(c.sub)}</div>
+    ${c.platform.map(p=>{const d=cpSt(c,p).done;return `<div class="rs">${PLAT_J[p]}：${d?`${esc(cpDT(d.at))}${d.ref?` ／ ${esc(d.ref)}`:''}`:'—'}</div>`}).join('')}
+    <div class="btns" style="margin-top:6px;justify-content:flex-end"><button class="btn sm" data-act="cpReopen" data-id="${esc(c.id)}">キューに戻す</button></div></div>`).join('')||'<div class="empty">まだ完了したカードはありません。</div>'}`}
+function cpSetHTML(){const s=CP.settings,li=CP.lastImport;
+  const row=(g,p,l,u)=>`<label class="gr"><span class="lb">${l}</span><input data-cpset="${g}.${p}" inputmode="decimal" value="${esc(s[g][p])}"><span class="u">${u}</span></label>`;
+  return `<div class="cpbar"><button class="btn sm" data-act="cpGo" data-v="queue">← キュー</button><span class="grow" style="font-weight:800">設定・取り込み</span></div>
+  <div class="gl">カードの取り込み</div><div class="card" style="border-radius:20px">
+  <div class="note" style="margin-bottom:8px">国ちゃんが用意した <b>posta_cards_update.json</b> を選んでください。同じIDのカードは新しい内容に置き換わります（チェック・手で直した値・メモ・完了済みカードはそのまま残ります）。version が取り込み済み以下のファイルは無視します。</div>
+  <label class="btn pri" style="width:100%">ファイルを選んで取り込む<input type="file" id="cpFile" accept=".json,application/json" hidden></label>
+  <div class="note" style="margin-top:8px">取り込み済み version：<b>${CP.importedVer}</b>${li?`（${esc(cpDT(li.at))}）`:''}</div>
+  ${UI.cpMsg?`<div class="note" style="margin-top:4px;color:var(--tx)">${esc(UI.cpMsg)}</div>`:''}</div>
+  <div class="cpset"><div class="gl">手数料率（取り込みデータに指定があればそちらを優先）</div>
+  <div class="gc">${PLATS.map(p=>row('fee',p,PLAT_J[p],'%')).join('')}</div>
+  <div class="gl">商品名の文字数上限</div><div class="gc">${PLATS.map(p=>row('titleMax',p,PLAT_J[p],'字')).join('')}</div>
+  <div class="gl">説明文の文字数上限</div><div class="gc">${PLATS.map(p=>row('descMax',p,PLAT_J[p],'字')).join('')}</div></div>
+  <div class="gl">書き出し</div><div class="card" style="border-radius:20px"><button class="btn" data-act="cpExport">履歴をJSONで書き出す</button>
+  <div class="note" style="margin-top:6px">データはこの端末の中だけに保存されます（外部へは送りません）。</div></div>`}
+function cpHTML(){if(UI.cv==='card'){const c=CP.cards.find(x=>x.id===UI.cid);if(c)return cpCardHTML(c);UI.cv='queue'}
+  return UI.cv==='hist'?cpHistHTML():UI.cv==='set'?cpSetHTML():cpQueueHTML()}
+function cpBadges(){const n=cpOpen().length,nb=$('#nb'),cp=UI.tab==='cp';nb.hidden=!n;nb.textContent=n;
+  $('#hsub').hidden=!cp;const hc=$('#hcnt');hc.hidden=!cp;hc.innerHTML=`<b>${n}</b><small>未処理</small>`}
+
+/* ---------- 操作 ---------- */
+const cpCur=()=>CP.cards.find(x=>x.id===UI.cid);
+function cpSetChk(c,p,key,val){const s=cpSt(c,p);if(val==null)delete s.chk[key];else s.chk[key]=val;cpSave()}
+function cpRerender(){const m=$('#view'),y=m.scrollTop;render();m.scrollTop=y}
+function cpFinish(c,p,ref){const s=cpSt(c,p);s.done={at:new Date().toISOString(),ref:String(ref||'').trim().slice(0,500)};
+  if(c.platform.every(x=>cpSt(c,x).done)){c.doneAt=s.done.at;cpSave();closeSheet();UI.cv='queue';toast(`${DONE_J[c.kind]}として履歴に移しました`);render();$('#view').scrollTop=0;return}
+  cpSave();closeSheet();const nx=c.platform.find(x=>!cpSt(c,x).done);UI.cplat[c.id]=nx;toast(`${PLAT_J[p]}を記録しました。残り：${PLAT_J[nx]}`);render();$('#view').scrollTop=0}
+function cpExport(){const done=CP.cards.filter(c=>c.doneAt);
+  const out={version:1,type:'posta_cards_history',app:'POSTA v'+APP_VER,exportedAt:new Date().toISOString(),
+    cards:done.map(c=>({id:c.id,kind:c.kind,status:DONE_CODE[c.kind],platform:c.platform.length===1?c.platform[0]:c.platform,itemRef:c.itemRef,work:c.work,sub:c.sub,currentPrice:c.currentPrice,completedAt:c.doneAt,
+      results:c.platform.map(p=>{const d=cpSt(c,p).done||{},ref=d.ref||'',u=/^https?:\/\//i.test(ref);
+        return{platform:p,completedAt:d.at||null,listingUrl:u?ref:null,listingId:ref&&!u?ref:null,price:cpPrice(c,p),
+          fields:cpView(c,p).fields.map(f=>Object.assign({type:f.type,label:f.label,value:cpVal(c,p,f)},f.currentValue!=null?{currentValue:f.currentValue}:{},cpSt(c,p).ed[f.key]!=null?{editedByUser:true}:{}))}}),
+      memo:c.memo||null})),
+    notes:cpOpen().filter(c=>c.memo).map(c=>({id:c.id,work:c.work,holdReason:c.holdReason,memo:c.memo}))};
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:'application/json'}));a.download=`posta_cards_history_${ymd(Date.now()).replace(/-/g,'')}.json`;
+  document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);toast(`履歴 ${out.cards.length}件を書き出しました`);return out}
+function cpPriceLive(el){const c=cpCur();if(!c)return;const p=cpPlat(c),n=num(el.value);if(!(n>=0))return;
+  const v=cpView(c,p).price||{},rate=cpFee(c,p),fee=Math.round(n*rate/100),net=n-fee-(v.shipping||0)-(v.packing||0),pr=v.cost!=null?net-v.cost:null;
+  const f=$('#cpFeeL');if(f)f.textContent=`手数料 −${yen(fee)}（${rate}%）／ 送料 −${yen(v.shipping||0)} ／ 梱包 −${yen(v.packing||0)}`;
+  const a=$('#cpNet');if(a)a.textContent=yen(net);const b=$('#cpProfit');if(b){b.textContent=pr!=null?yen(pr):'—';b.className=pr==null?'':pr>=0?'pos':'neg'}
+  const w=$('#cpFloorW');if(w)w.hidden=!(v.floor!=null&&n<v.floor)}
+async function cpImportFile(file){if(!file)return;if(file.size>CP_MAX_FILE){UI.cpMsg='ファイルが大きすぎます（1MBまで）';cpRerender();return}
+  let obj;try{obj=JSON.parse(await file.text())}catch(e){UI.cpMsg='JSONとして読めませんでした（'+file.name+'）';cpRerender();return}
+  const r=cpImport(obj);UI.cpMsg=cpImportMsg(r);toast(UI.cpMsg);cpRerender()}
+const CP_ACT={
+  cpQk(b){UI.qk=b.dataset.v;render()},
+  cpGo(b){UI.cv=b.dataset.v;render();$('#view').scrollTop=0},
+  cpOpen(b){UI.cid=b.dataset.id;UI.cv='card';render();$('#view').scrollTop=0},
+  cpPlat(b){const c=cpCur();if(!c||!c.platform.includes(b.dataset.v))return;UI.cplat[c.id]=b.dataset.v;cpRerender()},
+  async cpCopy(b){const c=cpCur();if(!c||c.holdReason)return;const p=cpPlat(c),f=cpField(c,p,b.dataset.k);if(!f)return;const t=cpVal(c,p,f);
+    if(await cpCopyText(t)){toast('コピーしました');cpSetChk(c,p,f.key,t);cpRerender()}},
+  async cpQCopy(b){const c=CP.cards.find(x=>x.id===b.dataset.id);if(!c||c.holdReason)return;const p=cpPlat(c),f=cpField(c,p,b.dataset.k);if(!f)return;const t=cpVal(c,p,f);
+    if(await cpCopyText(t)){toast(`コピーしました（${PLAT_J[p]}）`);cpSetChk(c,p,f.key,t);cpRerender()}},
+  cpChk(b){const c=cpCur();if(!c||c.holdReason)return;const p=cpPlat(c),k=b.dataset.k,s=cpSt(c,p);
+    const val=k==='@price'?String(cpPrice(c,p)):(()=>{const f=cpField(c,p,k);return f?cpVal(c,p,f):null})();if(val==null)return;
+    cpSetChk(c,p,k,s.chk[k]===val?null:val);cpRerender()},
+  cpPh(b){const c=cpCur();if(!c||c.holdReason)return;const p=cpPlat(c),i=+b.dataset.i,l=cpView(c,p).photos[i];if(l==null)return;
+    cpSetChk(c,p,'@ph'+i,cpSt(c,p).chk['@ph'+i]===l?null:l);cpRerender()},
+  cpEdit(b){const c=cpCur();if(!c||c.holdReason)return;const p=cpPlat(c),f=cpField(c,p,b.dataset.k);if(!f)return;UI.cpEditK=f.key;
+    openSheet(`${f.label}を編集（${PLAT_J[p]}）`,`<div class="fld"><textarea id="cpEd">${esc(cpVal(c,p,f))}</textarea></div>
+    <div class="note">ここで直した値は、次の取り込みでも上書きされません。国ちゃん案に戻したいときは「案に戻す」。</div>
+    <div class="btns" style="margin-top:12px"><button class="btn pri wide" data-act="cpEdSave">保存</button><button class="btn" data-act="cpEdReset">案に戻す</button></div>`)},
+  cpEdSave(){const c=cpCur();if(!c)return;const p=cpPlat(c),f=cpField(c,p,UI.cpEditK);if(!f)return;const v=$('#cpEd').value;const s=cpSt(c,p);
+    if(v===f.value)delete s.ed[f.key];else s.ed[f.key]=v;cpSave();closeSheet();cpRerender();toast('保存しました')},
+  cpEdReset(){const c=cpCur();if(!c)return;const p=cpPlat(c);delete cpSt(c,p).ed[UI.cpEditK];cpSave();closeSheet();cpRerender();toast('国ちゃん案に戻しました')},
+  cpPriceReset(){const c=cpCur();if(!c)return;delete cpSt(c,cpPlat(c)).ed['@price'];cpSave();cpRerender()},
+  cpFinish(){const c=cpCur();if(!c||c.holdReason)return;const p=cpPlat(c),g=cpProg(c,p);if(g.done<g.total)return;
+    if(c.kind!=='draft'){cpFinish(c,p,'');return}
+    openSheet(`出品完了を記録（${PLAT_J[p]}）`,`<div class="note" style="margin-bottom:8px">出品したページのURL、または出品ID（商品ID）を入れてください。空欄でも記録できます。</div>
+    <div class="fld"><label>出品URL または 出品ID（任意）</label><input id="cpRef" inputmode="url" autocomplete="off" placeholder="https://jp.mercari.com/item/m… または m…"></div>
+    <div class="btns"><button class="btn pri wide" data-act="cpFinishGo">記録する</button></div>`)},
+  cpFinishGo(){const c=cpCur();if(!c)return;cpFinish(c,cpPlat(c),($('#cpRef')||{}).value)},
+  cpUndoPlat(){const c=cpCur();if(!c||!confirm('この販路の完了記録を取り消しますか？'))return;cpSt(c,cpPlat(c)).done=null;c.doneAt=null;cpSave();cpRerender()},
+  cpReopen(b){const c=CP.cards.find(x=>x.id===b.dataset.id);if(!c||!confirm(`「${c.work}」をキューに戻しますか？（完了の記録は消えます）`))return;
+    c.doneAt=null;c.platform.forEach(p=>{cpSt(c,p).done=null});cpSave();cpRerender();toast('キューに戻しました')},
+  cpExport(){cpExport()},
+};
+
 /* ---------- 描画・操作 ---------- */
 function render(){$('#ver').textContent='v'+APP_VER;
   document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===UI.tab));
-  $('#view').innerHTML=UI.tab==='tpl'?tplHTML():calcHTML()}
+  cpBadges();
+  $('#view').innerHTML=UI.tab==='tpl'?tplHTML():UI.tab==='cp'?cpHTML():calcHTML()}
 const ACT={
   closeSheet(){closeSheet()},
   tChip(b){UI.tcat=b.dataset.v;render()},
@@ -282,6 +663,7 @@ const ACT={
   calcClear(){calcReset();render()},
   oldExport(){oldExport()},
 };
+Object.assign(ACT,CP_ACT);
 document.addEventListener('click',e=>{
   const tb=e.target.closest('#tabs button');if(tb){UI.tab=tb.dataset.tab;render();$('#view').scrollTop=0;return}
   const b=e.target.closest('[data-act]');if(!b)return;const f=ACT[b.dataset.act];if(f){e.preventDefault();f(b,e)}});
@@ -289,13 +671,23 @@ document.addEventListener('input',e=>{const el=e.target;
   if(el.id==='tq'){UI.tq=el.value;clearTimeout(UI.tqT);UI.tqT=setTimeout(()=>{const pos=el.selectionStart;render();const n=$('#tq');if(n){n.focus();try{n.setSelectionRange(pos,pos)}catch(_){}}},250);return}
   if(el.dataset.c){C[el.dataset.c]=el.value;if(el.dataset.c==='lp'||el.dataset.c==='lv'||el.dataset.c==='lr'){const u=$('#rU');if(u)u.textContent=perVolTxt();const cp=$('#rCap');if(cp)cp.textContent=capTxt()}
     else if(['rc','rs','rf','rr'].includes(el.dataset.c))needUpdate();return}
+  if(el.dataset.cpprice!==undefined){cpPriceLive(el);return}
+  if(el.dataset.cpmemo!==undefined){const c=cpCur();if(c){c.memo=el.value.slice(0,2000);clearTimeout(UI.cpMemoT);UI.cpMemoT=setTimeout(cpSave,400)}return}
   if(el.dataset.fv!==undefined&&FILL){const t=S.templates.find(x=>x.id===FILL.id);const pv=$('#fillPv');if(t&&pv)pv.textContent=fillText(t.body,FILL.vs,fillVals())}});
 document.addEventListener('change',e=>{const el=e.target;
+  if(el.id==='cpFile'){const f=el.files&&el.files[0];el.value='';cpImportFile(f);return}
+  if(el.dataset.cpmemo!==undefined){cpSave();return}
+  if(el.dataset.cpprice!==undefined){const c=cpCur();if(!c)return;const p=cpPlat(c),n=num(el.value);if(!(n>=0)){toast('数字で入力してください');cpRerender();return}
+    const v=cpView(c,p).price,s=cpSt(c,p);if(v&&v.price===Math.round(n))delete s.ed['@price'];else s.ed['@price']=Math.round(n);cpSave();cpRerender();return}
+  if(el.dataset.cpset){const [g,p]=el.dataset.cpset.split('.');const n=num(el.value);
+    if(!isFinite(n)||n<0||(g==='fee'&&n>=100)||(g!=='fee'&&(n<1||!Number.isInteger(n)))){toast('数字で入力してください');el.value=CP.settings[g][p];return}
+    CP.settings[g][p]=n;el.value=n;cpSave();toast('保存しました');return}
   if(el.dataset.set){const k=el.dataset.set;const n=num(el.value);if(!isFinite(n)||n<0||(k==='feePct'&&n>=100)){toast('数字で入力してください');el.value=S.settings[k];return}
     const ck=k==='feePct'?'fee':'ship';if(C&&!C.res&&String(C[ck])===String(S.settings[k])){C[ck]=String(n);const ci=document.querySelector(`[data-c=${ck}]`);if(ci)ci.value=C[ck]}
     S.settings[k]=n;el.value=n;save();toast('初期値を保存しました')}});
 // v2.0.3：新設の lr/rc/rs/rf/rr は利益計算と独立なので、Enterはキーボードを閉じるだけ（利益計算は走らせない）
-document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.dataset&&e.target.dataset.c){e.preventDefault();e.target.blur();if(!['lr','rc','rs','rf','rr'].includes(e.target.dataset.c))ACT.calcRun()}});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.dataset&&(e.target.dataset.cpprice!==undefined||e.target.dataset.cpset)){e.preventDefault();e.target.blur();return}
+  if(e.key==='Enter'&&e.target.dataset&&e.target.dataset.c){e.preventDefault();e.target.blur();if(!['lr','rc','rs','rf','rr'].includes(e.target.dataset.c))ACT.calcRun()}});
 render();
 </script>
 </body>
