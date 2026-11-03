@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "cards": [
     {
       "id": "draft-chi-zen8-20261103",
@@ -270,11 +270,11 @@
     },
     {
       "id": "draft-biz-kasegiguchi-20261103",
-      "kind": "draft",
+      "kind": "fix",
       "platform": "mercari",
       "itemRef": "SSS:40代からは「稼ぎ口」を2つにしなさい",
       "work": "40代からは「稼ぎ口」を2つにしなさい",
-      "sub": "単品（原価 約¥300・概算）",
+      "sub": "既存出品の文面改善（新規出品ではありません）",
       "currentPrice": null,
       "holdReason": null,
       "links": {
@@ -291,7 +291,7 @@
         {
           "type": "copy",
           "label": "商品名",
-          "value": "40代からは「稼ぎ口」を2つにしなさい 坂下仁",
+          "value": "40代からは「稼ぎ口」を2つにしなさい 坂下仁 年収アップと自由が手に入る働き方",
           "badge": "国ちゃん検証済み"
         },
         {
@@ -326,11 +326,11 @@
     },
     {
       "id": "draft-biz-fukugyo-20261103",
-      "kind": "draft",
+      "kind": "fix",
       "platform": "mercari",
       "itemRef": "SSS:副業で稼ぎたいと思ったら読む本",
       "work": "副業で稼ぎたいと思ったら読む本",
-      "sub": "単品（原価 約¥300・概算）",
+      "sub": "既存出品の文面改善（新規出品ではありません）",
       "currentPrice": null,
       "holdReason": null,
       "links": {
@@ -347,7 +347,7 @@
         {
           "type": "copy",
           "label": "商品名",
-          "value": "副業で稼ぎたいと思ったら読む本 坂本好隆",
+          "value": "副業で稼ぎたいと思ったら読む本 物販で手堅く月10万円稼ぐ方法 坂本好隆",
           "badge": "国ちゃん検証済み"
         },
         {
@@ -382,11 +382,11 @@
     },
     {
       "id": "draft-biz-sukinamono-20261103",
-      "kind": "draft",
+      "kind": "fix",
       "platform": "mercari",
       "itemRef": "SSS:好きなものを売って10年続く店をつくる",
       "work": "好きなものを売って10年続く店をつくる",
-      "sub": "単品（原価 約¥300・概算）",
+      "sub": "既存出品の文面改善（新規出品ではありません）",
       "currentPrice": null,
       "holdReason": null,
       "links": {
@@ -438,11 +438,11 @@
     },
     {
       "id": "draft-biz-freelance-20261103",
-      "kind": "draft",
+      "kind": "fix",
       "platform": "mercari",
       "itemRef": "SSS:世界一やさしいフリーランスの教科書1年生",
       "work": "世界一やさしいフリーランスの教科書1年生",
-      "sub": "単品（原価 約¥300・概算）",
+      "sub": "既存出品の文面改善（新規出品ではありません）",
       "currentPrice": null,
       "holdReason": null,
       "links": {
@@ -491,6 +491,388 @@
           "price": 430
         }
       }
+    },
+    {
+      "id": "fix-earphone-mercari-20261103",
+      "kind": "fix",
+      "platform": "mercari",
+      "itemRef": "出品中:iPhone用イヤホン（互換品）",
+      "work": "iPhone用イヤホン（互換品）",
+      "sub": "表示の是正：互換品の明記",
+      "currentPrice": 600,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "iPhone用イヤホン（",
+        "sub": "修正",
+        "color": "#607d8b"
+      },
+      "fields": [
+        {
+          "type": "copy",
+          "label": "商品名",
+          "value": "iPhone用 有線イヤホン Lightning 互換品 マイク付き",
+          "badge": "要修正"
+        },
+        {
+          "type": "copy",
+          "label": "商品の説明",
+          "value": "ご覧いただきありがとうございます。\nムラカミです。\n\n【商品説明】\n※本品はApple純正品ではありません。互換品です。\niPhone用 Lightning接続の有線イヤホンです。マイク付きで通話・リモコン操作ができます。\n\n【商品状態】\n中古品のため、使用感がある場合があります。写真をご確認のうえ、ご購入前にご質問ください。\n\n【発送について】\nご購入後、1〜2日以内に発送いたします。",
+          "badge": "要修正"
+        }
+      ],
+      "price": {
+        "price": 600,
+        "shipping": 230,
+        "packing": 50,
+        "cost": 0,
+        "floor": 480,
+        "market": 600,
+        "nextCut": {
+          "date": "2026-11-10",
+          "price": 550
+        }
+      }
+    },
+    {
+      "id": "fix-pokemon6-yahoo-20261103",
+      "kind": "fix",
+      "platform": "yahooflea",
+      "itemRef": "出品中:ポケットモンスター 6巻（ヤフーフリマ版）",
+      "work": "ポケットモンスター 6巻（ヤフーフリマ版）",
+      "sub": "状態欄の是正",
+      "currentPrice": 950,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "ポケットモンスター 6巻",
+        "sub": "修正",
+        "color": "#8d6e63"
+      },
+      "fields": [
+        {
+          "type": "select",
+          "label": "商品の状態",
+          "value": "やや傷や汚れあり（説明文のヤケ・小口汚れに合わせる）"
+        }
+      ]
+    },
+    {
+      "id": "fix-boruto1-yahoo-20261103",
+      "kind": "fix",
+      "platform": "yahooflea",
+      "itemRef": "出品中:BORUTO 第1部 全20巻（ヤフーフリマ版）",
+      "work": "BORUTO 第1部 全20巻（ヤフーフリマ版）",
+      "sub": "説明文への内訳転記＋状態欄の是正",
+      "currentPrice": 9000,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "BORUTO 第1部 全",
+        "sub": "修正",
+        "color": "#3949ab"
+      },
+      "fields": [
+        {
+          "type": "copy",
+          "label": "商品名",
+          "value": "BORUTO ボルト 第1部 全20巻セット 全巻初版 小説付き",
+          "badge": "要修正"
+        },
+        {
+          "type": "copy",
+          "label": "商品の説明",
+          "value": "ご覧いただきありがとうございます。\nムラカミです。\n\n【セット内容】\nBORUTO -ボルト- 第1部 全20巻セット＋小説\n著者：岸本斉史／池本幹雄\n出版社：集英社\n\n【商品状態】\n・初版：全巻初版です\n・帯：10・12・14・18巻と小説に帯付きです\n・チラシ：8・12・16・18巻にチラシ付きです\n・自宅保管です。喫煙者・ペットはおりません\n中古品のため、多少のヤケ・細かなスレ等がある場合があります。状態が気になる点は写真をご確認のうえ、ご購入前にご質問ください。\n\n【発送について】\nご購入後、1〜2日以内に発送いたします。\n\n#BORUTO #ボルト #全巻セット #初版 #集英社",
+          "badge": "要修正"
+        },
+        {
+          "type": "select",
+          "label": "商品の状態",
+          "value": "やや傷や汚れあり（説明文のヤケ表記に合わせる）"
+        }
+      ]
+    },
+    {
+      "id": "fix-boruto2-state-20261103",
+      "kind": "fix",
+      "platform": [
+        "mercari",
+        "yahooflea"
+      ],
+      "itemRef": "出品中:BORUTO 第2部 TBV 1〜8巻",
+      "work": "BORUTO 第2部 TBV 1〜8巻",
+      "sub": "状態欄の是正（両販路）",
+      "currentPrice": 7980,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "BORUTO 第2部 T",
+        "sub": "修正",
+        "color": "#3949ab"
+      },
+      "fields": [
+        {
+          "type": "select",
+          "label": "商品の状態",
+          "value": "やや傷や汚れあり（説明文のヤケ表記に合わせる）"
+        }
+      ]
+    },
+    {
+      "id": "pricecut-boruto1-20261103",
+      "kind": "pricecut",
+      "platform": [
+        "mercari",
+        "yahooflea"
+      ],
+      "itemRef": "出品中:BORUTO 第1部",
+      "work": "BORUTO 第1部 全20巻",
+      "sub": "週次値下げ（実勢 約¥8,200）",
+      "currentPrice": 9000,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "BORUTO 第1部",
+        "sub": "値下げ",
+        "color": "#3949ab"
+      },
+      "fields": [
+        {
+          "type": "select",
+          "label": "価格変更",
+          "value": "11/10 の週次改定で ¥8,500 に変更（両販路）"
+        }
+      ],
+      "price": {
+        "price": 8500,
+        "shipping": 750,
+        "packing": 100,
+        "cost": 0,
+        "floor": 7900,
+        "market": 8200,
+        "nextCut": {
+          "date": "2026-11-17",
+          "price": 8200
+        }
+      }
+    },
+    {
+      "id": "pricecut-boruto2-20261103",
+      "kind": "pricecut",
+      "platform": [
+        "mercari",
+        "yahooflea"
+      ],
+      "itemRef": "出品中:BORUTO 第2部",
+      "work": "BORUTO 第2部 TBV 1〜8巻",
+      "sub": "週次値下げ（売り切れ平均 ¥6,671）",
+      "currentPrice": 7980,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "BORUTO 第2部",
+        "sub": "値下げ",
+        "color": "#3949ab"
+      },
+      "fields": [
+        {
+          "type": "select",
+          "label": "価格変更",
+          "value": "11/10 の週次改定で ¥7,480 に変更（両販路）"
+        }
+      ],
+      "price": {
+        "price": 7480,
+        "shipping": 750,
+        "packing": 100,
+        "cost": 0,
+        "floor": 7000,
+        "market": 7300,
+        "nextCut": {
+          "date": "2026-11-17",
+          "price": 7180
+        }
+      }
+    },
+    {
+      "id": "pricecut-neverland-20261103",
+      "kind": "pricecut",
+      "platform": "mercari",
+      "itemRef": "出品中:約束のネバーランド",
+      "work": "約束のネバーランド（出品中）",
+      "sub": "全巻セット前提：相場中心 ¥2,333 へ寄せる",
+      "currentPrice": 2999,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "約束のネバーランド",
+        "sub": "値下げ",
+        "color": "#6a1b9a"
+      },
+      "fields": [
+        {
+          "type": "select",
+          "label": "価格変更",
+          "value": "11/10 の週次改定で ¥2,480 に変更（全巻セットの場合）"
+        }
+      ],
+      "price": {
+        "price": 2480,
+        "shipping": 750,
+        "packing": 100,
+        "cost": 0,
+        "floor": 2200,
+        "market": 2333,
+        "nextCut": {
+          "date": "2026-11-17",
+          "price": 2330
+        }
+      }
+    },
+    {
+      "id": "fix-rakushite-mercari-20261103",
+      "kind": "fix",
+      "platform": "mercari",
+      "itemRef": "出品中:ラクしてうまくいく生き方",
+      "work": "ラクしてうまくいく生き方",
+      "sub": "状態欄の是正＋タイトル改善",
+      "currentPrice": 300,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "ラクしてうまくいく生き方",
+        "sub": "修正",
+        "color": "#607d8b"
+      },
+      "fields": [
+        {
+          "type": "copy",
+          "label": "商品名",
+          "value": "ラクしてうまくいく生き方 ひろゆき 自分を最優先にしながらちゃんと結果を出す100のコツ",
+          "badge": "要修正"
+        },
+        {
+          "type": "select",
+          "label": "商品の状態",
+          "value": "やや傷や汚れあり（説明文のスレ・小傷表記に合わせる）"
+        }
+      ]
+    },
+    {
+      "id": "hold-pokeka-promo-yahoo-20261103",
+      "kind": "fix",
+      "platform": "yahooflea",
+      "itemRef": "出品中:ポケカ プロモ20枚（ヤフーフリマ）",
+      "work": "ポケカ プロモ20枚（ヤフーフリマ）",
+      "sub": "表記の統一が必要",
+      "currentPrice": 1000,
+      "holdReason": "現物確認が必要：プロモかノーマルかを確認し、内訳リストを用意してから文面を直します",
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "ポケカ プロモ20枚（ヤ",
+        "sub": "保留",
+        "color": "#b71c1c"
+      },
+      "fields": []
+    },
+    {
+      "id": "hold-naruto-hiden-20261103",
+      "kind": "fix",
+      "platform": "mercari",
+      "itemRef": "出品中:NARUTO 秘伝・臨の書",
+      "work": "NARUTO 秘伝・臨の書",
+      "sub": "初版の裏付けが必要",
+      "currentPrice": 990,
+      "holdReason": "現物確認が必要：奥付を見て初版かどうかを確認（初版なら奥付写真を追加、違えばバナーの「初版」を外す）",
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "NARUTO 秘伝・臨の",
+        "sub": "保留",
+        "color": "#b71c1c"
+      },
+      "fields": []
+    },
+    {
+      "id": "hold-kimetsu23-20261103",
+      "kind": "fix",
+      "platform": "mercari",
+      "itemRef": "出品中:鬼滅の刃 23巻 ×2件",
+      "work": "鬼滅の刃 23巻 ×2件",
+      "sub": "価格の逆転",
+      "currentPrice": null,
+      "holdReason": "現物確認が必要：新品シュリンク付き（¥999）と初版・帯付き（¥1,500）で個体の取り違えがないか確認",
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "鬼滅の刃 23巻 ×2件",
+        "sub": "保留",
+        "color": "#b71c1c"
+      },
+      "fields": []
+    },
+    {
+      "id": "hold-fgo-vol1-20261103",
+      "kind": "fix",
+      "platform": "mercari",
+      "itemRef": "出品中:FGO turas réalta 1巻 ¥2,999",
+      "work": "FGO turas réalta 1巻 ¥2,999",
+      "sub": "相場と大きく乖離",
+      "currentPrice": 2999,
+      "holdReason": "相場確認済み：1・2巻セットの売り切れは¥366〜400で、単品¥2,999は約7倍。SSS在庫の1巻と別の個体か確認のうえ、扱いを決めます",
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "FGO turas ré",
+        "sub": "保留",
+        "color": "#b71c1c"
+      },
+      "fields": []
     }
   ]
 }
