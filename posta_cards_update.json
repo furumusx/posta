@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "cards": [
     {
       "id": "draft-chi-zen8-20261103",
@@ -259,12 +259,236 @@
         "price": 1500,
         "shipping": 750,
         "packing": 100,
-        "cost": 924,
-        "floor": 1200,
+        "cost": 385,
+        "floor": 1100,
         "market": 1400,
         "nextCut": {
           "date": "2026-11-10",
           "price": 1425
+        }
+      }
+    },
+    {
+      "id": "draft-biz-kasegiguchi-20261103",
+      "kind": "draft",
+      "platform": "mercari",
+      "itemRef": "SSS:40代からは「稼ぎ口」を2つにしなさい",
+      "work": "40代からは「稼ぎ口」を2つにしなさい",
+      "sub": "単品（原価はSSS未入力）",
+      "currentPrice": null,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "40代からは「稼ぎ口」を",
+        "sub": "単品",
+        "color": "#455a64"
+      },
+      "fields": [
+        {
+          "type": "copy",
+          "label": "商品名",
+          "value": "40代からは「稼ぎ口」を2つにしなさい 坂下仁",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "copy",
+          "label": "商品の説明",
+          "value": "ご覧いただきありがとうございます。\nムラカミです。\n\n【商品情報】\n40代からは「稼ぎ口」を2つにしなさい : 年収アップと自由が手に入る働き方\n著者：坂下仁\n出版社：ダイヤモンド社\n\n【商品状態】\n・自宅保管です。喫煙者・ペットはおりません\n中古品のため、細かなスレ等がある場合があります。状態が気になる点は写真をご確認のうえ、ご購入前にご質問ください。\n\n【発送について】\nご購入後、1〜2日以内に発送いたします。",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "select",
+          "label": "商品の状態",
+          "value": "目立った傷や汚れなし（現物を見て違えば変更してください）"
+        },
+        {
+          "type": "select",
+          "label": "配送",
+          "value": "送料込み（出品者負担）"
+        }
+      ],
+      "price": {
+        "price": 450,
+        "shipping": 230,
+        "packing": 50,
+        "cost": 0,
+        "floor": 350,
+        "market": 375,
+        "nextCut": {
+          "date": "2026-11-10",
+          "price": 430
+        }
+      }
+    },
+    {
+      "id": "draft-biz-fukugyo-20261103",
+      "kind": "draft",
+      "platform": "mercari",
+      "itemRef": "SSS:副業で稼ぎたいと思ったら読む本",
+      "work": "副業で稼ぎたいと思ったら読む本",
+      "sub": "単品（原価はSSS未入力）",
+      "currentPrice": null,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "副業で稼ぎたいと思ったら",
+        "sub": "単品",
+        "color": "#455a64"
+      },
+      "fields": [
+        {
+          "type": "copy",
+          "label": "商品名",
+          "value": "副業で稼ぎたいと思ったら読む本 坂本好隆",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "copy",
+          "label": "商品の説明",
+          "value": "ご覧いただきありがとうございます。\nムラカミです。\n\n【商品情報】\n副業で稼ぎたいと思ったら読む本 : 会社に頼らず物販ビジネスで手堅く月10万円稼ぐ方法\n著者：坂本好隆\n出版社：サンクチュアリ出版\n\n【商品状態】\n・自宅保管です。喫煙者・ペットはおりません\n中古品のため、細かなスレ等がある場合があります。状態が気になる点は写真をご確認のうえ、ご購入前にご質問ください。\n\n【発送について】\nご購入後、1〜2日以内に発送いたします。",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "select",
+          "label": "商品の状態",
+          "value": "目立った傷や汚れなし（現物を見て違えば変更してください）"
+        },
+        {
+          "type": "select",
+          "label": "配送",
+          "value": "送料込み（出品者負担）"
+        }
+      ],
+      "price": {
+        "price": 550,
+        "shipping": 230,
+        "packing": 50,
+        "cost": 0,
+        "floor": 450,
+        "market": 440,
+        "nextCut": {
+          "date": "2026-11-10",
+          "price": 520
+        }
+      }
+    },
+    {
+      "id": "draft-biz-sukinamono-20261103",
+      "kind": "draft",
+      "platform": "mercari",
+      "itemRef": "SSS:好きなものを売って10年続く店をつくる",
+      "work": "好きなものを売って10年続く店をつくる",
+      "sub": "単品（原価はSSS未入力）",
+      "currentPrice": null,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "好きなものを売って10年",
+        "sub": "単品",
+        "color": "#455a64"
+      },
+      "fields": [
+        {
+          "type": "copy",
+          "label": "商品名",
+          "value": "好きなものを売って10年続く店をつくる 碓井美樹",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "copy",
+          "label": "商品の説明",
+          "value": "ご覧いただきありがとうございます。\nムラカミです。\n\n【商品情報】\n好きなものを売って10年続く店をつくる\n著者：碓井美樹\n出版社：KADOKAWA\n\n【商品状態】\n・自宅保管です。喫煙者・ペットはおりません\n中古品のため、細かなスレ等がある場合があります。状態が気になる点は写真をご確認のうえ、ご購入前にご質問ください。\n\n【発送について】\nご購入後、1〜2日以内に発送いたします。",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "select",
+          "label": "商品の状態",
+          "value": "目立った傷や汚れなし（現物を見て違えば変更してください）"
+        },
+        {
+          "type": "select",
+          "label": "配送",
+          "value": "送料込み（出品者負担）"
+        }
+      ],
+      "price": {
+        "price": 680,
+        "shipping": 230,
+        "packing": 50,
+        "cost": 0,
+        "floor": 550,
+        "market": 650,
+        "nextCut": {
+          "date": "2026-11-10",
+          "price": 650
+        }
+      }
+    },
+    {
+      "id": "draft-biz-freelance-20261103",
+      "kind": "draft",
+      "platform": "mercari",
+      "itemRef": "SSS:世界一やさしいフリーランスの教科書1年生",
+      "work": "世界一やさしいフリーランスの教科書1年生",
+      "sub": "単品（原価はSSS未入力）",
+      "currentPrice": null,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "世界一やさしいフリーラン",
+        "sub": "単品",
+        "color": "#455a64"
+      },
+      "fields": [
+        {
+          "type": "copy",
+          "label": "商品名",
+          "value": "世界一やさしいフリーランスの教科書1年生 高田ゲンキ",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "copy",
+          "label": "商品の説明",
+          "value": "ご覧いただきありがとうございます。\nムラカミです。\n\n【商品情報】\n世界一やさしいフリーランスの教科書1年生 : 駆け出しクリエイター必読!\n著者：高田ゲンキ\n出版社：ソーテック社\n\n【商品状態】\n・自宅保管です。喫煙者・ペットはおりません\n中古品のため、細かなスレ等がある場合があります。状態が気になる点は写真をご確認のうえ、ご購入前にご質問ください。\n\n【発送について】\nご購入後、1〜2日以内に発送いたします。",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "select",
+          "label": "商品の状態",
+          "value": "目立った傷や汚れなし（現物を見て違えば変更してください）"
+        },
+        {
+          "type": "select",
+          "label": "配送",
+          "value": "送料込み（出品者負担）"
+        }
+      ],
+      "price": {
+        "price": 450,
+        "shipping": 230,
+        "packing": 50,
+        "cost": 0,
+        "floor": 380,
+        "market": 420,
+        "nextCut": {
+          "date": "2026-11-10",
+          "price": 430
         }
       }
     }
