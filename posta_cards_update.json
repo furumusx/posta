@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "cards": [
     {
       "id": "draft-chi-zen8-20261103",
@@ -153,6 +153,118 @@
         "nextCut": {
           "date": "2026-11-10",
           "price": 4085
+        }
+      }
+    },
+    {
+      "id": "draft-deadpool-samurai-12-20261103",
+      "kind": "draft",
+      "platform": "mercari",
+      "itemRef": "SSS:デッドプール：SAMURAI 1・2巻",
+      "work": "デッドプール：SAMURAI",
+      "sub": "1・2巻セット 2巻のみ初版・帯なし",
+      "currentPrice": 1290,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "デッドプール",
+        "sub": "1・2巻",
+        "color": "#7a1f1f"
+      },
+      "fields": [
+        {
+          "type": "copy",
+          "label": "商品名",
+          "value": "デッドプール：SAMURAI 1・2巻セット 2巻初版 笠間三四郎",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "copy",
+          "label": "商品の説明",
+          "value": "ご覧いただきありがとうございます。\nムラカミです。\n\n【セット内容】\nデッドプール：SAMURAI 1・2巻セット\n原作：笠間三四郎／作画：植杉光生\n出版社：集英社\n\n【商品状態】\n・初版：2巻のみ初版です（1巻は2刷です）\n・帯：ありません\n・自宅保管です。喫煙者・ペットはおりません\n中古品のため、細かなスレ等がある場合があります。状態が気になる点は写真をご確認のうえ、ご購入前にご質問ください。\n\n【発送について】\nご購入後、1〜2日以内に発送いたします。\n\n#デッドプール #MARVEL #漫画セット",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "select",
+          "label": "商品の状態",
+          "value": "目立った傷や汚れなし（現物と違う場合は変更してください）"
+        },
+        {
+          "type": "select",
+          "label": "配送",
+          "value": "送料込み（出品者負担）／らくらくメルカリ便"
+        }
+      ],
+      "price": {
+        "price": 1400,
+        "shipping": 380,
+        "packing": 100,
+        "cost": 780,
+        "floor": 1250,
+        "market": 1290,
+        "nextCut": {
+          "date": "2026-11-10",
+          "price": 1330
+        }
+      }
+    },
+    {
+      "id": "draft-karakuri-16-22-dup-20261103",
+      "kind": "draft",
+      "platform": "mercari",
+      "itemRef": "SSS:からくりサーカス 重複分 16〜22巻",
+      "work": "からくりサーカス（重複分）",
+      "sub": "16〜22巻 7冊セット 全43巻の途中巻",
+      "currentPrice": null,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "からくりサーカス",
+        "sub": "16〜22巻",
+        "color": "#37474f"
+      },
+      "fields": [
+        {
+          "type": "copy",
+          "label": "商品名",
+          "value": "からくりサーカス 16〜22巻 7冊セット 藤田和日郎",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "copy",
+          "label": "商品の説明",
+          "value": "ご覧いただきありがとうございます。\nムラカミです。\n\n【セット内容】\nからくりサーカス 16〜22巻 7冊セット\n著者：藤田和日郎\n出版社：小学館\n※全43巻のうち16〜22巻のみのセットです。全巻セットではありません\n\n【商品状態】\n・自宅保管です。喫煙者・ペットはおりません\n中古品のため、細かなスレ・ヤケ等がある場合があります。状態が気になる点は写真をご確認のうえ、ご購入前にご質問ください。\n\n【発送について】\nご購入後、1〜2日以内に発送いたします。\n\n#からくりサーカス #藤田和日郎 #少年サンデー #漫画セット",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "select",
+          "label": "商品の状態",
+          "value": "やや傷や汚れあり（現物を見て違えば変更してください）"
+        },
+        {
+          "type": "select",
+          "label": "配送",
+          "value": "送料込み（出品者負担）"
+        }
+      ],
+      "price": {
+        "price": 1500,
+        "shipping": 750,
+        "packing": 100,
+        "cost": 924,
+        "floor": 1200,
+        "market": 1400,
+        "nextCut": {
+          "date": "2026-11-10",
+          "price": 1425
         }
       }
     }
