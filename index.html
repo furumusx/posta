@@ -200,7 +200,7 @@ nav#tabs button .nb{position:absolute;top:5px;left:calc(50% + 8px);background:va
 <div id="toast"></div>
 <script>
 'use strict';
-const APP_VER='2.1.0';
+const APP_VER='2.1.1';
 const KEY='posta_v2',OLD_KEY='posta_v1';
 const TCATS=['買った時','売れた時','コメント','受取評価','その他'];
 const VARS=['{商品名}','{価格}','{状態}','{発送方法}','{今日}'];
@@ -566,8 +566,9 @@ function cpSetHTML(){const s=CP.settings,li=CP.lastImport;
   const row=(g,p,l,u)=>`<label class="gr"><span class="lb">${l}</span><input data-cpset="${g}.${p}" inputmode="decimal" value="${esc(s[g][p])}"><span class="u">${u}</span></label>`;
   return `<div class="cpbar"><button class="btn sm" data-act="cpGo" data-v="queue">← キュー</button><span class="grow" style="font-weight:800">設定・取り込み</span></div>
   <div class="gl">カードの取り込み</div><div class="card" style="border-radius:20px">
-  <div class="note" style="margin-bottom:8px">国ちゃんが用意した <b>posta_cards_update.json</b> を選んでください。同じIDのカードは新しい内容に置き換わります（チェック・手で直した値・メモ・完了済みカードはそのまま残ります）。version が取り込み済み以下のファイルは無視します。</div>
+  <div class="note" style="margin-bottom:8px">国ちゃんが用意した <b>posta_cards_update.json</b> を選んでください。同じIDのカードは新しい内容に置き換わります（チェック・手で直した値・メモ・完了済みカードはそのまま残ります）。version が取り込み済み以下のファイルは無視します。アプリと同じ場所に置かれた更新は、開いたときに自動で取り込みます。</div>
   <label class="btn pri" style="width:100%">ファイルを選んで取り込む<input type="file" id="cpFile" accept=".json,application/json" hidden></label>
+  <button class="btn" style="width:100%;margin-top:8px" data-act="cpCheck"${UI.cpBusy?' disabled':''}>今すぐ更新を確認</button>
   <div class="note" style="margin-top:8px">取り込み済み version：<b>${CP.importedVer}</b>${li?`（${esc(cpDT(li.at))}）`:''}</div>
   ${UI.cpMsg?`<div class="note" style="margin-top:4px;color:var(--tx)">${esc(UI.cpMsg)}</div>`:''}</div>
   <div class="cpset"><div class="gl">手数料率（取り込みデータに指定があればそちらを優先）</div>
@@ -606,6 +607,26 @@ function cpPriceLive(el){const c=cpCur();if(!c)return;const p=cpPlat(c),n=num(el
 async function cpImportFile(file){if(!file)return;if(file.size>CP_MAX_FILE){UI.cpMsg='ファイルが大きすぎます（1MBまで）';cpRerender();return}
   let obj;try{obj=JSON.parse(await file.text())}catch(e){UI.cpMsg='JSONとして読めませんでした（'+file.name+'）';cpRerender();return}
   const r=cpImport(obj);UI.cpMsg=cpImportMsg(r);toast(UI.cpMsg);cpRerender()}
+/* ---------- v2.1.1：自動取得（アプリと同じ場所の posta_cards_update.json だけ。相対パス固定・同一オリジン） ----------
+   取り込み規則は cpImport に任せる。manual=false（起動時）は追加・置き換えがあったときだけ知らせ、それ以外は無言。 */
+const CP_UPDATE_PATH='posta_cards_update.json';let cpAutoDone=false;
+async function cpAutoFetch(manual){
+  if(!/^https?:$/.test(location.protocol)){if(manual){UI.cpMsg='取り込めませんでした：http/https で開いたときだけ更新を確認できます';cpRerender()}return null}
+  if(UI.cpBusy){if(manual){UI.cpMsg='更新を確認しています…（少し待ってからもう一度押してください）';cpRerender()}return null}UI.cpBusy=true;if(manual){UI.cpMsg='更新を確認しています…';cpRerender()}
+  let r;
+  try{const res=await fetch(CP_UPDATE_PATH,{cache:'no-store',credentials:'same-origin',redirect:'error'});
+    if(!res.ok)r={err:res.status===404?'更新ファイルが置かれていません（404）':`更新ファイルを取得できませんでした（HTTP ${res.status}）`};
+    else{const t=await res.text();
+      if(t.length>CP_MAX_FILE)r={err:'ファイルが大きすぎます（1MBまで）'};
+      else{let obj=null;try{obj=JSON.parse(t)}catch(e){}r=cpImport(obj)}}}
+  catch(e){r={err:'更新ファイルを取得できませんでした（通信エラー・オフライン）'}}
+  finally{UI.cpBusy=false}
+  const changed=!r.err&&!r.ignored&&(r.added||r.replaced)>0;
+  if(manual){UI.cpMsg=r.ignored?`最新の状態です（version ${r.v} は取り込み済み・現在 ${r.cur}）`:cpImportMsg(r);toast(UI.cpMsg);cpRerender()}
+  else if(changed){UI.cpMsg=cpImportMsg(r);toast(UI.cpMsg);
+    const a=document.activeElement;if(a&&/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)&&$('#view').contains(a))cpBadges();else cpRerender()}
+  return r}
+function cpAutoStart(){if(cpAutoDone)return;cpAutoDone=true;if(/^https?:$/.test(location.protocol))cpAutoFetch(false)}
 const CP_ACT={
   cpQk(b){UI.qk=b.dataset.v;render()},
   cpGo(b){UI.cv=b.dataset.v;render();$('#view').scrollTop=0},
@@ -638,6 +659,7 @@ const CP_ACT={
   cpReopen(b){const c=CP.cards.find(x=>x.id===b.dataset.id);if(!c||!confirm(`「${c.work}」をキューに戻しますか？（完了の記録は消えます）`))return;
     c.doneAt=null;c.platform.forEach(p=>{cpSt(c,p).done=null});cpSave();cpRerender();toast('キューに戻しました')},
   cpExport(){cpExport()},
+  cpCheck(){cpAutoFetch(true)},
 };
 
 /* ---------- 描画・操作 ---------- */
@@ -689,6 +711,7 @@ document.addEventListener('change',e=>{const el=e.target;
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.dataset&&(e.target.dataset.cpprice!==undefined||e.target.dataset.cpset)){e.preventDefault();e.target.blur();return}
   if(e.key==='Enter'&&e.target.dataset&&e.target.dataset.c){e.preventDefault();e.target.blur();if(!['lr','rc','rs','rf','rr'].includes(e.target.dataset.c))ACT.calcRun()}});
 render();
+cpAutoStart();
 </script>
 </body>
 </html>
