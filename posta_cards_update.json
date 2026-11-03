@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 7,
   "cards": [
     {
       "id": "draft-chi-zen8-20261103",
@@ -869,6 +869,195 @@
       },
       "thumb": {
         "text": "FGO turas ré",
+        "sub": "保留",
+        "color": "#b71c1c"
+      },
+      "fields": []
+    },
+    {
+      "id": "draft-kaiju8-vol1-20261103",
+      "kind": "draft",
+      "platform": "mercari",
+      "itemRef": "SSS:怪獣8号 1巻",
+      "work": "怪獣8号 1巻",
+      "sub": "単品・初版・帯付き",
+      "currentPrice": null,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "怪獣8号 1巻",
+        "sub": "下書き",
+        "color": "#455a64"
+      },
+      "fields": [
+        {
+          "type": "copy",
+          "label": "商品名",
+          "value": "怪獣8号 1巻 初版 帯付き 松本直也",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "copy",
+          "label": "商品の説明",
+          "value": "ご覧いただきありがとうございます。\nムラカミです。\n\n【セット内容】\n怪獣8号 1巻\n著者：松本直也\n出版社：集英社\n\n【商品状態】\n・初版：初版です\n・帯：帯付きです\n・自宅保管です。喫煙者・ペットはおりません\n中古品のため、細かなスレ等がある場合があります。状態が気になる点は写真をご確認のうえ、ご購入前にご質問ください。\n\n【発送について】\nご購入後、1〜2日以内に発送いたします。\n\n#怪獣8号 #松本直也 #少年ジャンププラス #初版",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "select",
+          "label": "商品の状態",
+          "value": "目立った傷や汚れなし（現物を見て違えば変更してください）"
+        },
+        {
+          "type": "select",
+          "label": "配送",
+          "value": "送料込み（出品者負担）"
+        }
+      ],
+      "price": {
+        "price": 700,
+        "shipping": 230,
+        "packing": 50,
+        "cost": 132,
+        "floor": 550,
+        "market": 680,
+        "nextCut": {
+          "date": "2026-11-10",
+          "price": 665
+        }
+      }
+    },
+    {
+      "id": "draft-kizuna-set-20261103",
+      "kind": "draft",
+      "platform": "mercari",
+      "itemRef": "SSS:スパイダーマン：絆",
+      "work": "スパイダーマン：絆",
+      "sub": "全4巻・全巻初版・帯付き",
+      "currentPrice": null,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "スパイダーマン：絆",
+        "sub": "下書き",
+        "color": "#7b1fa2"
+      },
+      "fields": [
+        {
+          "type": "copy",
+          "label": "商品名",
+          "value": "スパイダーマン：絆 全4巻セット 全巻初版 帯付き",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "copy",
+          "label": "商品の説明",
+          "value": "ご覧いただきありがとうございます。\nムラカミです。\n\n【セット内容】\nスパイダーマン：絆 1〜4巻セット（全4巻）\n著者：小林拙太／水野ハチ\n出版社：集英社\n\n【商品状態】\n・初版：全巻初版です\n・帯：全巻帯付きです\n・やや傷や汚れあり：ヤケ・スレ等がある場合があります\n・自宅保管です。喫煙者・ペットはおりません\n中古品のため、細かなスレ等がある場合があります。状態が気になる点は写真をご確認のうえ、ご購入前にご質問ください。\n\n【発送について】\nご購入後、1〜2日以内に発送いたします。\n\n#スパイダーマン #絆 #MARVEL #全巻セット #初版",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "select",
+          "label": "商品の状態",
+          "value": "やや傷や汚れあり"
+        },
+        {
+          "type": "select",
+          "label": "配送",
+          "value": "送料込み（出品者負担）"
+        }
+      ],
+      "price": {
+        "price": 3980,
+        "shipping": 750,
+        "packing": 100,
+        "cost": 528,
+        "floor": 3400,
+        "market": 4400,
+        "nextCut": {
+          "date": "2026-11-10",
+          "price": 3780
+        }
+      }
+    },
+    {
+      "id": "draft-magia-another-20261103",
+      "kind": "draft",
+      "platform": "mercari",
+      "itemRef": "SSS:マギアレコード アナザーストーリー",
+      "work": "マギアレコード アナザーストーリー",
+      "sub": "全2巻。出品中の¥1,350と別物のときだけ使用",
+      "currentPrice": null,
+      "holdReason": null,
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "マギアレコード アナザー",
+        "sub": "下書き",
+        "color": "#ad1457"
+      },
+      "fields": [
+        {
+          "type": "copy",
+          "label": "商品名",
+          "value": "マギアレコード アナザーストーリー 全2巻セット",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "copy",
+          "label": "商品の説明",
+          "value": "ご覧いただきありがとうございます。\nムラカミです。\n\n【セット内容】\nマギアレコード 魔法少女まどか☆マギカ外伝 アナザーストーリー 1〜2巻セット（全2巻）\n原作：Magica Quartet\n出版社：芳文社\n\n【商品状態】\n・全2巻のセットです\n・自宅保管です。喫煙者・ペットはおりません\n中古品のため、細かなスレ等がある場合があります。状態が気になる点は写真をご確認のうえ、ご購入前にご質問ください。\n\n【発送について】\nご購入後、1〜2日以内に発送いたします。\n\n#マギアレコード #まどかマギカ #魔法少女まどかマギカ",
+          "badge": "国ちゃん検証済み"
+        },
+        {
+          "type": "select",
+          "label": "商品の状態",
+          "value": "目立った傷や汚れなし（現物を見て違えば変更してください）"
+        },
+        {
+          "type": "select",
+          "label": "配送",
+          "value": "送料込み（出品者負担）"
+        }
+      ],
+      "price": {
+        "price": 2200,
+        "shipping": 380,
+        "packing": 100,
+        "cost": 264,
+        "floor": 1800,
+        "market": 3000,
+        "nextCut": {
+          "date": "2026-11-10",
+          "price": 2090
+        }
+      }
+    },
+    {
+      "id": "hold-takagi-112-20261103",
+      "kind": "fix",
+      "platform": "mercari",
+      "itemRef": "SSS:からかい上手の高木さん 1〜12",
+      "work": "からかい上手の高木さん 1〜12巻",
+      "sub": "補完優先のため下書き化しない",
+      "currentPrice": null,
+      "holdReason": "補完優先：13〜20巻を残り予算¥2,104で揃える計画が本線です。部分売り（1〜12巻）の売り切れ実績は¥1,600の1件のみで、原価¥968＋送料では赤字になるため、今は下書きを作りません",
+      "links": {
+        "sss": true,
+        "koma": true,
+        "ai": true
+      },
+      "thumb": {
+        "text": "高木さん",
         "sub": "保留",
         "color": "#b71c1c"
       },
