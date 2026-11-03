@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "cards": [
     {
       "id": "draft-chi-zen8-20261103",
@@ -274,7 +274,7 @@
       "platform": "mercari",
       "itemRef": "SSS:40代からは「稼ぎ口」を2つにしなさい",
       "work": "40代からは「稼ぎ口」を2つにしなさい",
-      "sub": "単品（原価はSSS未入力）",
+      "sub": "単品（原価 約¥300・概算）",
       "currentPrice": null,
       "holdReason": null,
       "links": {
@@ -315,7 +315,7 @@
         "price": 450,
         "shipping": 230,
         "packing": 50,
-        "cost": 0,
+        "cost": 300,
         "floor": 350,
         "market": 375,
         "nextCut": {
@@ -330,7 +330,7 @@
       "platform": "mercari",
       "itemRef": "SSS:副業で稼ぎたいと思ったら読む本",
       "work": "副業で稼ぎたいと思ったら読む本",
-      "sub": "単品（原価はSSS未入力）",
+      "sub": "単品（原価 約¥300・概算）",
       "currentPrice": null,
       "holdReason": null,
       "links": {
@@ -371,7 +371,7 @@
         "price": 550,
         "shipping": 230,
         "packing": 50,
-        "cost": 0,
+        "cost": 300,
         "floor": 450,
         "market": 440,
         "nextCut": {
@@ -386,7 +386,7 @@
       "platform": "mercari",
       "itemRef": "SSS:好きなものを売って10年続く店をつくる",
       "work": "好きなものを売って10年続く店をつくる",
-      "sub": "単品（原価はSSS未入力）",
+      "sub": "単品（原価 約¥300・概算）",
       "currentPrice": null,
       "holdReason": null,
       "links": {
@@ -427,7 +427,7 @@
         "price": 680,
         "shipping": 230,
         "packing": 50,
-        "cost": 0,
+        "cost": 300,
         "floor": 550,
         "market": 650,
         "nextCut": {
@@ -442,7 +442,7 @@
       "platform": "mercari",
       "itemRef": "SSS:世界一やさしいフリーランスの教科書1年生",
       "work": "世界一やさしいフリーランスの教科書1年生",
-      "sub": "単品（原価はSSS未入力）",
+      "sub": "単品（原価 約¥300・概算）",
       "currentPrice": null,
       "holdReason": null,
       "links": {
@@ -483,7 +483,7 @@
         "price": 450,
         "shipping": 230,
         "packing": 50,
-        "cost": 0,
+        "cost": 300,
         "floor": 380,
         "market": 420,
         "nextCut": {
