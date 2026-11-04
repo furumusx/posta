@@ -1,5 +1,5 @@
 {
- "version": 8,
+ "version": 9,
  "cards": [
   {
    "id": "draft-chi-zen8-20261103",
@@ -685,7 +685,7 @@
    ],
    "itemRef": "出品中:BORUTO 第2部",
    "work": "BORUTO 第2部 TBV 1〜8巻",
-   "sub": "週次値下げ（売り切れ平均 ¥6,671）",
+   "sub": "週次値下げ（実勢 1〜8巻 ¥3,500〜3,999・中心 約¥3,750）※旧カード差し替え",
    "currentPrice": 7980,
    "holdReason": null,
    "links": {
@@ -702,19 +702,19 @@
     {
      "type": "select",
      "label": "価格変更",
-     "value": "11/10 の週次改定で ¥7,480 に変更（両販路）"
+     "value": "11/10 の週次改定で ¥3,980 に変更（両販路）"
     }
    ],
    "price": {
-    "price": 7480,
+    "price": 3980,
     "shipping": 750,
     "packing": 100,
     "cost": 0,
-    "floor": 7000,
-    "market": 7300,
+    "floor": 3480,
+    "market": 3750,
     "nextCut": {
      "date": "2026-11-17",
-     "price": 7180
+     "price": 3680
     }
    }
   },
