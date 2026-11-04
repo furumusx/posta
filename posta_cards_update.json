@@ -1,5 +1,5 @@
 {
- "version": 10,
+ "version": 11,
  "cards": [
   {
    "id": "draft-chi-zen8-20261103",
@@ -643,8 +643,8 @@
    ],
    "itemRef": "出品中:BORUTO 第1部",
    "work": "BORUTO 第1部 全20巻",
-   "sub": "週次値下げ（実勢 約¥8,200）",
-   "currentPrice": 9000,
+   "sub": "週次値下げ（実勢 約¥8,150／初版＋小説付き）※11/4時点で¥8,200に改定済み",
+   "currentPrice": 8200,
    "holdReason": null,
    "links": {
     "sss": true,
@@ -660,19 +660,19 @@
     {
      "type": "select",
      "label": "価格変更",
-     "value": "11/10 の週次改定で ¥8,500 に変更（両販路）"
+     "value": "現在 ¥8,200。11/10 の週次改定は据え置き、売れなければ 11/17 に ¥7,900（下限）へ"
     }
    ],
    "price": {
-    "price": 8500,
+    "price": 8200,
     "shipping": 750,
     "packing": 100,
     "cost": 0,
     "floor": 7900,
-    "market": 8200,
+    "market": 8150,
     "nextCut": {
      "date": "2026-11-17",
-     "price": 8200
+     "price": 7900
     }
    }
   },
